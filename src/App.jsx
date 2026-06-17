@@ -17,8 +17,8 @@ function App() {
       <div className="app-container">
         <HeroSection />
         <InteractiveTarget />
-        <AboutAcademy />
         <WhyChooseUs />
+        <AboutAcademy />
         <AchievementsSection />
         <MeetCoach />
         <Gallery />
