@@ -25,9 +25,9 @@ const Home = () => {
       <HeroSection />
       <InteractiveTarget />
       <WhyChooseUs />
-      <AnnualCompetition />
       <MeetCoach />
       <AboutAcademy />
+      <AnnualCompetition />
       <AchievementsSection />
       <Gallery />
       <Testimonials />
