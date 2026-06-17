@@ -7,7 +7,7 @@ const HeroSection = () => {
     <section className="hero">
       <div className="hero-background">
         {/* We use the requested user image */}
-        <img src="/home1.png" alt="Professional Archery Coaching at Deona Archery Academy in New Panvel" className="hero-img" loading="eager" />
+        <img src="/home1.png" alt="Professional Archery Coaching at Drona Archery Academy in New Panvel" className="hero-img" loading="eager" />
         <div className="hero-overlay"></div>
       </div>
       
@@ -19,11 +19,11 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           >
-            <span style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>AIM HIGH</span> <br />
-            <span style={{ color: '#111111' }}>FOUNDATION.</span> <br />
-            <span style={{ color: 'var(--color-accent-blue)' }}>DEONA</span> <br />
-            <span style={{ color: 'var(--color-accent-red)' }}>ARCHERY</span> <br />
-            <span style={{ color: 'var(--color-accent-yellow)' }}>ACADEMY.</span>
+            <span style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>Aim high Foundation</span> <br />
+            <span style={{ color: '#111111' }}>Present's</span> <br />
+            <span style={{ color: 'var(--color-accent-blue)' }}>Drona Archery</span> <br />
+            <span style={{ color: 'var(--color-accent-red)' }}>Academy</span> <br />
+            <span style={{ color: 'var(--color-accent-yellow)' }}>Panvel</span>
           </motion.h1>
 
           <motion.p

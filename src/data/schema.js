@@ -1,12 +1,12 @@
-// JSON-LD Schema definitions for Deona Archery Academy
+// JSON-LD Schema definitions for Drona Archery Academy
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "SportsActivityLocation", "SportsOrganization"],
-  "name": "Deona Archery Academy",
-  "image": "https://deonaarcheryacademy.com/home1.png",
-  "@id": "https://deonaarcheryacademy.com",
-  "url": "https://deonaarcheryacademy.com",
+  "name": "Drona Archery Academy",
+  "image": "https://dronaarcheryacademy.com/home1.png",
+  "@id": "https://dronaarcheryacademy.com",
+  "url": "https://dronaarcheryacademy.com",
   "telephone": "+91XXXXXXXXXX",
   "address": {
     "@type": "PostalAddress",
@@ -25,8 +25,8 @@ export const localBusinessSchema = {
     "New Panvel", "Panvel", "Kamothe", "Kharghar", "Kalamboli", "Taloja", "Belapur", "Nerul", "Vashi", "Airoli", "Thane", "Raigad"
   ],
   "sameAs": [
-    "https://www.facebook.com/DeonaArchery",
-    "https://www.instagram.com/DeonaArchery"
+    "https://www.facebook.com/DronaArchery",
+    "https://www.instagram.com/DronaArchery"
   ],
   "priceRange": "$$",
   "description": "Premium archery coaching in New Panvel, Navi Mumbai. We offer professional training, Olympic recurve training, compound bow training, and kids archery classes across Panvel, Kharghar, and surrounding areas."
@@ -41,7 +41,7 @@ export const faqSchema = {
       "name": "What is the best archery academy in Navi Mumbai?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Deona Archery Academy, located in New Panvel, is considered one of the best archery academies in Navi Mumbai, offering professional training, Olympic recurve coaching, and kids classes."
+        "text": "Drona Archery Academy, located in New Panvel, is considered one of the best archery academies in Navi Mumbai, offering professional training, Olympic recurve coaching, and kids classes."
       }
     },
     {
@@ -105,7 +105,7 @@ export const faqSchema = {
       "name": "Where in Raigad can I find good archery classes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Deona Archery Academy in New Panvel is easily accessible from all over the Raigad district and provides top-tier archery training."
+        "text": "Drona Archery Academy in New Panvel is easily accessible from all over the Raigad district and provides top-tier archery training."
       }
     },
     {

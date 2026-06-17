@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, url, image, schema }) => {
-  const siteName = "Deona Archery Academy";
+  const siteName = "Drona Archery Academy";
   return (
     <Helmet>
       {/* Standard Metadata */}
@@ -16,7 +16,7 @@ const SEO = ({ title, description, url, image, schema }) => {
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title ? `${title} | ${siteName}` : siteName} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={url || "https://deonaarcheryacademy.com/"} />
+      <meta property="og:url" content={url || "https://dronaarcheryacademy.com/"} />
       <meta property="og:site_name" content={siteName} />
       {image && <meta property="og:image" content={image} />}
 
