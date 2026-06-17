@@ -82,8 +82,8 @@
 
 .target-container {
   position: relative;
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +124,7 @@
   z-index: 10;
   display: flex;
   align-items: center;
-  width: 400px;
+  width: 300px;
   height: 4px;
   /* Arrow points right */
 }
