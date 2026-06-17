@@ -36,69 +36,59 @@ const InteractiveTarget = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Pin the section
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: '+=150%',
-          pin: true,
-          scrub: 1,
+      let mm = gsap.matchMedia();
+
+      mm.add({
+        isDesktop: "(min-width: 769px)",
+        isMobile: "(max-width: 768px)"
+      }, (context) => {
+        let { isDesktop, isMobile } = context.conditions;
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: '+=150%',
+            pin: true,
+            scrub: 1,
+          }
+        });
+
+        // Animate Arrow Flying in
+        tl.fromTo(arrowRef.current, 
+          { x: -1000, y: isMobile ? 200 : 500, rotation: -45, opacity: 0 },
+          { x: 0, y: 0, rotation: 0, opacity: 1, duration: 2, ease: "power2.out" }
+        );
+
+        // Animate Rings Glowing sequentially
+        const ringColors = ['#111111', 'var(--color-accent-blue)', 'var(--color-accent-red)', 'var(--color-accent-yellow)'];
+        const ringGlows = ['rgba(17, 17, 17, 0.5)', 'rgba(0, 114, 181, 0.5)', 'rgba(224, 26, 34, 0.5)', 'rgba(255, 184, 0, 0.5)'];
+
+        ringsRef.current.forEach((ring, index) => {
+          tl.to(ring, {
+            borderColor: ringColors[index],
+            boxShadow: `0 0 20px ${ringGlows[index]}, inset 0 0 20px ${ringGlows[index]}`,
+            backgroundColor: ringColors[index],
+            duration: 0.5
+          }, "-=1.5");
+        });
+
+        // Move target and fade in the programs
+        if (isDesktop) {
+          tl.to(targetRef.current, { x: '-20vw', scale: 0.8, duration: 1.5, ease: "power2.inOut" }, "+=0.5");
+          tl.to(programsRef.current, { opacity: 1, x: 0, duration: 1.5, ease: "power2.out" }, "<");
+        } else {
+          tl.to(targetRef.current, { y: '-15vh', scale: 0.6, duration: 1.5, ease: "power2.inOut" }, "+=0.5");
+          tl.to(programsRef.current, { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, "<");
         }
+
+        // Stagger in the small program boxes
+        tl.fromTo(programBoxesRef.current,
+          { opacity: 0, x: isMobile ? 0 : 50, y: isMobile ? 30 : 0 },
+          { opacity: 1, x: 0, y: 0, stagger: 0.2, duration: 0.8, ease: "power2.out" },
+          "-=1"
+        );
       });
-
-      // Animate Arrow Flying in
-      tl.fromTo(arrowRef.current, 
-        { x: -1000, y: 500, rotation: -45, opacity: 0 },
-        { x: 0, y: 0, rotation: 0, opacity: 1, duration: 2, ease: "power2.out" }
-      );
-
-      // Animate Rings Glowing sequentially
-      const ringColors = [
-        '#111111',                  // Ring 1: Black
-        'var(--color-accent-blue)', // Ring 2: Blue
-        'var(--color-accent-red)',  // Ring 3: Red
-        'var(--color-accent-yellow)'// Ring 4: Yellow
-      ];
-      
-      const ringGlows = [
-        'rgba(17, 17, 17, 0.5)',
-        'rgba(0, 114, 181, 0.5)',
-        'rgba(224, 26, 34, 0.5)',
-        'rgba(255, 184, 0, 0.5)'
-      ];
-
-      ringsRef.current.forEach((ring, index) => {
-        tl.to(ring, {
-          borderColor: ringColors[index],
-          boxShadow: `0 0 20px ${ringGlows[index]}, inset 0 0 20px ${ringGlows[index]}`,
-          backgroundColor: ringColors[index],
-          duration: 0.5
-        }, "-=1.5");
-      });
-
-      // Move target to the left and fade in the programs on the right
-      tl.to(targetRef.current, {
-        x: '-20vw',
-        scale: 0.8,
-        duration: 1.5,
-        ease: "power2.inOut"
-      }, "+=0.5");
-
-      tl.to(programsRef.current, {
-        opacity: 1,
-        x: 0,
-        duration: 1.5,
-        ease: "power2.out"
-      }, "<");
-
-      // Stagger in the small program boxes
-      tl.fromTo(programBoxesRef.current,
-        { opacity: 0, x: 50 },
-        { opacity: 1, x: 0, stagger: 0.2, duration: 0.8, ease: "power2.out" },
-        "-=1"
-      );
-
     }, sectionRef);
 
     return () => ctx.revert();

@@ -76,11 +76,17 @@
   
   .hero-content {
     align-items: flex-end;
+    justify-content: center;
     padding-bottom: 4rem;
+  }
+  
+  .hero-text {
+    text-align: center;
   }
   
   .hero-buttons {
     flex-direction: column;
     align-items: stretch;
+    justify-content: center;
   }
 }

@@ -95,5 +95,22 @@
 @media (max-width: 768px) {
   .event-banner {
     padding: 3rem 1.5rem;
+    border-radius: 20px;
+  }
+  
+  .event-cards-row {
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  
+  .glass-card {
+    padding: 1.5rem;
+    min-width: 100%;
+  }
+  
+  .event-icon {
+    margin-bottom: 1rem;
+    width: 48px;
+    height: 48px;
   }
 }
