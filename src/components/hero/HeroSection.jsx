@@ -11,6 +11,12 @@ const HeroSection = () => {
         <div className="hero-overlay"></div>
       </div>
       
+      <header className="hero-header">
+        <div className="container">
+          <img src="/logo.png" alt="Drona Archery Academy Logo" className="hero-logo" />
+        </div>
+      </header>
+      
       <div className="container hero-content">
         <div className="hero-text">
           <motion.h1 
