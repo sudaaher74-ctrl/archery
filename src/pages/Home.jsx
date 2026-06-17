@@ -23,15 +23,15 @@ const Home = () => {
         schema={[localBusinessSchema, faqSchema]}
       />
       <HeroSection />
-      <InteractiveTarget />
-      <WhyChooseUs />
+      <div className="mobile-hidden"><InteractiveTarget /></div>
+      <div className="mobile-hidden"><WhyChooseUs /></div>
       <MeetCoach />
       <AboutAcademy />
       <AnnualCompetition />
-      <AchievementsSection />
-      <Gallery />
-      <Testimonials />
-      <FullScreenCTA />
+      <div className="mobile-hidden"><AchievementsSection /></div>
+      <div className="mobile-hidden"><Gallery /></div>
+      <div className="mobile-hidden"><Testimonials /></div>
+      <div className="mobile-hidden"><FullScreenCTA /></div>
       <Footer />
     </>
   );
