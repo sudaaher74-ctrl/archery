@@ -7,7 +7,7 @@ const HeroSection = () => {
     <section className="hero">
       <div className="hero-background">
         {/* We use the requested user image */}
-        <img src="/home1.png" alt="Professional Archer" className="hero-img" />
+        <img src="/home1.png" alt="Professional Archery Coaching at Deona Archery Academy in New Panvel" className="hero-img" loading="eager" />
         <div className="hero-overlay"></div>
       </div>
       
@@ -25,6 +25,15 @@ const HeroSection = () => {
             <span style={{ color: 'var(--color-accent-red)' }}>ARCHERY</span> <br />
             <span style={{ color: 'var(--color-accent-yellow)' }}>ACADEMY.</span>
           </motion.h1>
+
+          <motion.p
+            style={{ color: '#111111', fontSize: '1.1rem', marginBottom: '2rem', maxWidth: '600px', fontWeight: '500' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            Located in New Panvel, Navi Mumbai and serving students from Panvel, Kharghar, Kamothe, Kalamboli, Thane, Raigad and surrounding areas.
+          </motion.p>
           
           <motion.div 
             className="hero-buttons"

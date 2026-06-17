@@ -1,32 +1,32 @@
 import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { ReactLenis } from 'lenis/react';
-import HeroSection from './components/hero/HeroSection';
-import AboutAcademy from './components/about/AboutAcademy';
-import WhyChooseUs from './components/whychooseus/WhyChooseUs';
-import InteractiveTarget from './components/target/InteractiveTarget';
-import AchievementsSection from './components/achievements/AchievementsSection';
-import MeetCoach from './components/coach/MeetCoach';
-import Gallery from './components/gallery/Gallery';
-import Testimonials from './components/testimonials/Testimonials';
-import FullScreenCTA from './components/cta/FullScreenCTA';
-import Footer from './components/Footer';
+
+// Import Pages
+import Home from './pages/Home';
+import About from './pages/About';
+import Programs from './pages/Programs';
+import GalleryPage from './pages/GalleryPage';
+import Contact from './pages/Contact';
 
 function App() {
   return (
-    <ReactLenis root>
-      <div className="app-container">
-        <HeroSection />
-        <InteractiveTarget />
-        <WhyChooseUs />
-        <MeetCoach />
-        <AboutAcademy />
-        <AchievementsSection />
-        <Gallery />
-        <Testimonials />
-        <FullScreenCTA />
-        <Footer />
-      </div>
-    </ReactLenis>
+    <HelmetProvider>
+      <ReactLenis root>
+        <Router>
+          <div className="app-container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/archery-programs" element={<Programs />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </div>
+        </Router>
+      </ReactLenis>
+    </HelmetProvider>
   );
 }
 
