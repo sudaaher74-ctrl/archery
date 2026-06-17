@@ -1,7 +1,7 @@
 .why-section {
   position: relative;
   background-color: var(--color-bg);
-  background-image: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+  background-image: radial-gradient(circle at 50% 0%, rgba(224, 26, 34, 0.05) 0%, transparent 70%);
 }
 
 .why-header {

@@ -31,11 +31,25 @@ const InteractiveTarget = () => {
       );
 
       // Animate Rings Glowing sequentially
+      const ringColors = [
+        '#111111',                  // Ring 1: Black
+        'var(--color-accent-blue)', // Ring 2: Blue
+        'var(--color-accent-red)',  // Ring 3: Red
+        'var(--color-accent-yellow)'// Ring 4: Yellow
+      ];
+      
+      const ringGlows = [
+        'rgba(17, 17, 17, 0.5)',
+        'rgba(0, 114, 181, 0.5)',
+        'rgba(224, 26, 34, 0.5)',
+        'rgba(255, 184, 0, 0.5)'
+      ];
+
       ringsRef.current.forEach((ring, index) => {
         tl.to(ring, {
-          borderColor: 'var(--color-gold)',
-          boxShadow: '0 0 20px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.5)',
-          backgroundColor: index === 3 ? 'rgba(212, 175, 55, 0.2)' : 'transparent',
+          borderColor: ringColors[index],
+          boxShadow: `0 0 20px ${ringGlows[index]}, inset 0 0 20px ${ringGlows[index]}`,
+          backgroundColor: ringColors[index],
           duration: 0.5
         }, "-=1.5");
       });

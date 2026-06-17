@@ -1,6 +1,6 @@
 .testimonials-section {
   background-color: var(--color-bg);
-  background-image: radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+  background-image: radial-gradient(circle at 100% 100%, rgba(255, 184, 0, 0.1) 0%, transparent 50%);
 }
 
 .testimonials-header {

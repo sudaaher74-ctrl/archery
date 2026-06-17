@@ -2,7 +2,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #050505;
+  background-color: var(--color-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
 .target-ring {
   position: absolute;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--color-border);
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -43,7 +43,7 @@
 
 .ring-label-center {
   margin-top: 0;
-  color: var(--color-gold);
+  color: var(--color-bg);
   font-weight: 600;
 }
 
@@ -69,7 +69,7 @@
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 20px solid var(--color-gold);
+  border-left: 20px solid var(--color-accent-red);
   margin-left: -2px;
 }
 
@@ -82,8 +82,8 @@
     45deg,
     #222,
     #222 5px,
-    var(--color-gold) 5px,
-    var(--color-gold) 10px
+    var(--color-accent-red) 5px,
+    var(--color-accent-red) 10px
   );
   clip-path: polygon(0 50%, 20% 0, 100% 0, 80% 50%, 100% 100%, 20% 100%);
 }

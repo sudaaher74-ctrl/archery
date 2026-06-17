@@ -1,15 +1,20 @@
 :root {
-  --color-bg: #0a0a0a;
-  --color-surface: #141414;
-  --color-surface-light: rgba(255, 255, 255, 0.03);
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-text-main: #ffffff;
-  --color-text-muted: #888888;
+  --color-bg: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-surface-light: rgba(0, 0, 0, 0.03);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-text-main: #111111;
+  --color-text-muted: #555555;
   
-  --color-gold: #D4AF37;
-  --color-gold-light: #F3E5AB;
-  --color-gold-dark: #996515;
-  --color-gold-glow: rgba(212, 175, 55, 0.2);
+  --color-accent-yellow: #FFB800; /* Archery yellow/gold */
+  --color-accent-red: #E01A22; /* Archery red */
+  --color-accent-blue: #0072B5; /* Archery blue */
+  
+  /* Retain color-gold for backwards compatibility if needed, but updated to the new yellow */
+  --color-gold: #E01A22; /* Replacing gold with Red as primary brand accent */
+  --color-gold-light: #FF4D4D;
+  --color-gold-dark: #A30000;
+  --color-gold-glow: rgba(224, 26, 34, 0.2);
   
   --font-primary: 'Outfit', sans-serif;
   --font-secondary: 'Playfair Display', serif;
@@ -40,7 +45,7 @@ body {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #222;
+  background: #ccc;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -81,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glassmorphism Utilities */
 .glass {
-  background: rgba(20, 20, 20, 0.4);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--color-border);
@@ -107,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary {
   background-color: var(--color-gold);
-  color: var(--color-bg);
+  color: #ffffff;
   border: 1px solid var(--color-gold);
 }
 

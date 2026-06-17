@@ -65,7 +65,7 @@ const WhyChooseUs = () => {
               key={index} 
               className="why-card glass"
               variants={cardVariants}
-              whileHover={{ y: -10, borderColor: "var(--color-gold)", boxShadow: "0 10px 30px rgba(212, 175, 55, 0.1)" }}
+              whileHover={{ y: -10, borderColor: "var(--color-gold)", boxShadow: "0 10px 30px var(--color-gold-glow)" }}
             >
               <div className="why-icon title-gold">{feature.icon}</div>
               <h3 className="why-title">{feature.title}</h3>

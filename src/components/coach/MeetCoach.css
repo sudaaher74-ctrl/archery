@@ -49,14 +49,14 @@
   transform: translateY(-50%);
   width: 12px;
   height: 2px;
-  background-color: var(--color-gold);
+  background-color: var(--color-accent-yellow);
 }
 
 .coach-signature {
   font-family: var(--font-secondary);
   font-size: 4rem;
   font-style: italic;
-  color: var(--color-gold);
+  color: var(--color-accent-blue);
   margin-top: 4rem;
   opacity: 0.8;
 }
