@@ -108,40 +108,26 @@ const InteractiveTarget = () => {
 
   return (
     <section className="target-section" ref={sectionRef}>
-      <div className="target-split-container">
-        {/* Left Side: The Interactive Target */}
+      
+      {/* DESKTOP VIEW: Interactive Target */}
+      <div className="target-split-container desktop-only">
         <div className="target-left" ref={targetRef}>
           <div className="target-container">
-            {/* The Rings */}
-            <div className="target-ring ring-1" ref={addToRings}>
-              <span className="ring-label">Beginner</span>
-            </div>
-            <div className="target-ring ring-2" ref={addToRings}>
-              <span className="ring-label">Intermediate</span>
-            </div>
-            <div className="target-ring ring-3" ref={addToRings}>
-              <span className="ring-label">Advanced</span>
-            </div>
-            <div className="target-ring ring-4" ref={addToRings}>
-              <span className="ring-label ring-label-center">Champion</span>
-            </div>
-
-            {/* The Arrow */}
+            <div className="target-ring ring-1" ref={addToRings}><span className="ring-label">Beginner</span></div>
+            <div className="target-ring ring-2" ref={addToRings}><span className="ring-label">Intermediate</span></div>
+            <div className="target-ring ring-3" ref={addToRings}><span className="ring-label">Advanced</span></div>
+            <div className="target-ring ring-4" ref={addToRings}><span className="ring-label ring-label-center">Champion</span></div>
             <div className="target-arrow" ref={arrowRef}>
-              <div className="arrow-shaft"></div>
-              <div className="arrow-head"></div>
-              <div className="arrow-fletching"></div>
+              <div className="arrow-shaft"></div><div className="arrow-head"></div><div className="arrow-fletching"></div>
             </div>
           </div>
         </div>
 
-        {/* Right Side: Training Programs Info */}
         <div className="target-right" ref={programsRef}>
           <div className="programs-info">
             <h2 className="title-secondary" style={{ marginBottom: '3rem' }}>
               OUR <span className="title-gold">PROCESS</span>
             </h2>
-            
             <div className="programs-list">
               {programs.map((prog, index) => (
                 <div className="program-box glass" key={index} ref={addToBoxes}>
@@ -155,8 +141,57 @@ const InteractiveTarget = () => {
             </div>
           </div>
         </div>
-
       </div>
+
+      {/* MOBILE VIEW: Cards matching the screenshot */}
+      <div className="mobile-programs-container mobile-only">
+        <h5 className="section-subtitle">OUR PROGRAMS</h5>
+        <h2 className="section-title">
+          TRAIN. IMPROVE. <span className="title-gold">EXCEL.</span>
+        </h2>
+        
+        <div className="mobile-program-cards">
+          {/* Card 1 */}
+          <div className="prog-card">
+            <div className="prog-card-img" style={{ backgroundImage: "url('/gallery1.jpg')" }}></div>
+            <div className="prog-card-content">
+              <div className="prog-card-header">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <h3>BEGINNER PROGRAM</h3>
+              </div>
+              <p>Perfect for new archers. Learn the basics, build confidence and enjoy the journey.</p>
+              <button className="prog-learn-more">LEARN MORE &rarr;</button>
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="prog-card">
+            <div className="prog-card-img" style={{ backgroundImage: "url('/gallery2.jpg')" }}></div>
+            <div className="prog-card-content">
+              <div className="prog-card-header">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                <h3>INTERMEDIATE PROGRAM</h3>
+              </div>
+              <p>Take your skills to the next level with structured training and techniques.</p>
+              <button className="prog-learn-more">LEARN MORE &rarr;</button>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="prog-card">
+            <div className="prog-card-img" style={{ backgroundImage: "url('/gallery3.jpg')" }}></div>
+            <div className="prog-card-content">
+              <div className="prog-card-header">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12h18"></path><path d="M12 3l9 9-9 9"></path><path d="M3 12l4-4"></path><path d="M3 12l4 4"></path></svg>
+                <h3>ADVANCED PROGRAM</h3>
+              </div>
+              <p>For competitive archers aiming for excellence and podium finishes.</p>
+              <button className="prog-learn-more">LEARN MORE &rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 };

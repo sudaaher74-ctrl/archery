@@ -4,75 +4,39 @@ import './WhyChooseUs.css';
 
 const features = [
   {
-    icon: <Target size={40} strokeWidth={1.5} />,
-    title: 'Focus',
-    desc: 'Master your mind, master your aim.'
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>,
+    title: 'CERTIFIED COACHES'
   },
   {
-    icon: <Shield size={40} strokeWidth={1.5} />,
-    title: 'Discipline',
-    desc: 'Consistency breeds excellence.'
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>,
+    title: 'PREMIUM EQUIPMENT'
   },
   {
-    icon: <Zap size={40} strokeWidth={1.5} />,
-    title: 'Confidence',
-    desc: 'Trust your form, trust yourself.'
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>,
+    title: 'TOP FACILITY IN PANVEL'
   },
   {
-    icon: <TrendingUp size={40} strokeWidth={1.5} />,
-    title: 'Performance',
-    desc: 'Elevate beyond the competition.'
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>,
+    title: 'SAFE & SUPPORTIVE ENVIRONMENT'
   }
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-};
-
 const WhyChooseUs = () => {
   return (
-    <section className="why-section section-padding">
+    <section className="why-section">
       <div className="container">
-        <motion.div 
-          className="why-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="title-secondary">WHY <span className="title-gold">ARCHERY</span></h2>
-        </motion.div>
+        <h2 className="why-main-title">WHY CHOOSE US?</h2>
         
-        <motion.div 
-          className="why-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
+        <div className="why-grid">
           {features.map((feature, index) => (
-            <motion.div 
-              key={index} 
-              className="why-card glass"
-              variants={cardVariants}
-              whileHover={{ y: -10, borderColor: "var(--color-gold)", boxShadow: "0 10px 30px var(--color-gold-glow)" }}
-            >
-              <div className="why-icon title-gold">{feature.icon}</div>
-              <h3 className="why-title">{feature.title}</h3>
-              <p className="why-desc text-body">{feature.desc}</p>
-            </motion.div>
+            <div key={index} className="why-item">
+              <div className="why-icon-container">
+                {feature.icon}
+              </div>
+              <h3 className="why-item-title">{feature.title}</h3>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

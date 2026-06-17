@@ -1,88 +1,85 @@
 .cta-section {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  padding: 0 1.5rem 4rem 1.5rem;
+  background-color: #111111; /* Blend with Why Choose Us */
 }
 
-.cta-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.cta-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.1); /* Subtle zoom */
-}
-
-.cta-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0.95) 100%);
-}
-
-.cta-container {
-  position: relative;
-  z-index: 2;
-  text-align: center;
+.cta-yellow-card {
+  background-color: var(--color-accent-yellow, #FFC107);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.2);
+}
+
+.cta-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .cta-title {
-  margin-bottom: 3rem;
-  line-height: 1.1;
+  color: #111111;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
 }
 
-.cta-buttons {
+.cta-desc {
+  color: #222222;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 500;
+}
+
+.cta-enroll-btn {
+  background-color: #111111;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
   display: flex;
-  gap: 1.5rem;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
-/* Flying Arrow Animation */
-.flying-arrow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  pointer-events: none;
-  opacity: 0.5;
-  filter: blur(2px);
+.cta-enroll-btn:hover {
+  background-color: #333333;
 }
 
-.fast-arrow {
-  width: 300px;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
-  box-shadow: 0 0 20px var(--color-gold);
-}
-
-@media (max-width: 768px) {
-  .cta-title {
-    font-size: 3rem;
+@media (min-width: 768px) {
+  .cta-section {
+    padding: 0 5% 5rem 5%;
   }
-  
-  .cta-buttons {
-    flex-direction: column;
+
+  .cta-yellow-card {
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    padding: 3rem 4rem;
   }
-  
-  .cta-buttons .btn {
-    width: 100%;
-    max-width: 300px;
+
+  .cta-text-content {
+    max-width: 60%;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+  }
+
+  .cta-desc {
+    font-size: 1.1rem;
+  }
+
+  .cta-enroll-btn {
+    font-size: 1rem;
+    padding: 1.2rem 2.5rem;
   }
 }

@@ -67,21 +67,30 @@
 
 @media (max-width: 768px) {
   .hero {
-    height: 100dvh;
+    height: auto;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .hero-background {
+    position: relative;
+    height: auto;
+    width: 100%;
+  }
+
+  .hero-img {
+    height: auto;
+    object-fit: contain;
   }
 
   .hero-overlay {
-    background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0) 100%);
-  }
-  
-  .hero-img {
-    object-position: center;
+    display: none; /* No gradient needed on stacked layout */
   }
   
   .hero-content {
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding-bottom: 2rem;
+    position: relative;
+    padding: 2rem 1.5rem;
+    background-color: var(--color-bg); /* Match the dark theme if applicable, or site background */
   }
   
   .hero-text {
@@ -95,82 +104,51 @@
   }
   
   .hero-buttons {
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
     gap: 1rem;
     width: 100%;
   }
 
   .hero-buttons .btn {
     padding: 1rem 1.5rem;
-    font-size: 0.95rem;
-    flex: 1;
+    font-size: 1.1rem;
     text-align: center;
-  }
-}
-
-/* Mobile Features Bar */
-.hero-mobile-features {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    height: auto;
-    min-height: 100dvh;
-    flex-direction: column;
-    overflow: visible;
-  }
-
-  .hero-background {
-    position: relative;
-    height: 80dvh;
-  }
-
-  .hero-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: auto;
-    padding-bottom: 2rem;
   }
 
   .hero-mobile-features {
     display: flex;
+    flex-direction: column;
     background: #111111;
     color: white;
-    padding: 2.5rem 1rem;
-    justify-content: space-between;
-    gap: 1rem;
+    padding: 2.5rem 1.5rem;
+    gap: 2rem;
     width: 100%;
   }
 
   .feature-item {
-    flex: 1;
-    text-align: center;
+    text-align: left;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
   }
 
   .feature-icon {
     color: var(--color-accent-yellow, #FFC107);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
   }
 
   .feature-item h4 {
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     color: white;
-    letter-spacing: 0.5px;
   }
 
   .feature-item p {
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     color: #aaaaaa;
-    line-height: 1.4;
-    margin: 0;
   }
 }
