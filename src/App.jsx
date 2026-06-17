@@ -18,9 +18,9 @@ function App() {
         <HeroSection />
         <InteractiveTarget />
         <WhyChooseUs />
+        <MeetCoach />
         <AboutAcademy />
         <AchievementsSection />
-        <MeetCoach />
         <Gallery />
         <Testimonials />
         <FullScreenCTA />
