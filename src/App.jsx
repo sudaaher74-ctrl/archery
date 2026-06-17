@@ -16,9 +16,9 @@ function App() {
     <ReactLenis root>
       <div className="app-container">
         <HeroSection />
+        <InteractiveTarget />
         <AboutAcademy />
         <WhyChooseUs />
-        <InteractiveTarget />
         <AchievementsSection />
         <MeetCoach />
         <Gallery />
