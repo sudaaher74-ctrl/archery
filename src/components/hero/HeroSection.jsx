@@ -7,7 +7,7 @@ const HeroSection = () => {
     <section className="hero">
       <div className="hero-background">
         {/* We use the requested user image */}
-        <img src="/home.png" alt="Professional Archer" className="hero-img" />
+        <img src="/home1.png" alt="Professional Archer" className="hero-img" />
         <div className="hero-overlay"></div>
       </div>
       
