@@ -91,6 +91,11 @@
   z-index: 20;
 }
 
+.hero-header .container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .hero-logo {
   height: 80px;
   width: auto;
