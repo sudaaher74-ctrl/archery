@@ -6,28 +6,28 @@ const MobileBottomNav = () => {
   return (
     <nav className="mobile-bottom-nav">
       <NavLink to="/" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
-        <Home size={24} />
-        <span>Home</span>
+        <div className="nav-icon-wrapper"><Home size={24} /></div>
+        <span className="nav-label">Home</span>
       </NavLink>
       
       <NavLink to="/archery-programs" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
-        <Crosshair size={24} />
-        <span>Programs</span>
+        <div className="nav-icon-wrapper"><Crosshair size={24} /></div>
+        <span className="nav-label">Programs</span>
       </NavLink>
 
       <NavLink to="/gallery" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
-        <ImageIcon size={24} />
-        <span>Gallery</span>
+        <div className="nav-icon-wrapper"><ImageIcon size={24} /></div>
+        <span className="nav-label">Gallery</span>
       </NavLink>
 
       <NavLink to="/about" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
-        <Info size={24} />
-        <span>About</span>
+        <div className="nav-icon-wrapper"><Info size={24} /></div>
+        <span className="nav-label">About</span>
       </NavLink>
 
       <NavLink to="/contact" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
-        <PhoneCall size={24} />
-        <span>Contact</span>
+        <div className="nav-icon-wrapper"><PhoneCall size={24} /></div>
+        <span className="nav-label">Contact</span>
       </NavLink>
     </nav>
   );
