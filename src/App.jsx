@@ -10,6 +10,7 @@ import Programs from './pages/Programs';
 import GalleryPage from './pages/GalleryPage';
 import Contact from './pages/Contact';
 import Navbar from './components/navbar/Navbar';
+import MobileBottomNav from './components/navbar/MobileBottomNav';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
+            <MobileBottomNav />
           </div>
         </Router>
       </ReactLenis>
