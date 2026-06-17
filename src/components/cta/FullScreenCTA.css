@@ -1,7 +1,7 @@
 .cta-section {
   position: relative;
   width: 100vw;
-  height: clamp(700px, 56.25vw, 1000px);
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

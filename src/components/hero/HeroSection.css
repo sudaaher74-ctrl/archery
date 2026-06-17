@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   width: 100vw;
-  height: clamp(700px, 56.25vw, 1000px);
+  height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -66,8 +66,12 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    height: 100dvh;
+  }
+
   .hero-overlay {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0) 100%);
   }
   
   .hero-img {
@@ -76,17 +80,97 @@
   
   .hero-content {
     align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 4rem;
+    justify-content: flex-start;
+    padding-bottom: 2rem;
   }
   
   .hero-text {
-    text-align: center;
+    text-align: left;
+    width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
   }
   
   .hero-buttons {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .hero-buttons .btn {
+    padding: 1rem 1.5rem;
+    font-size: 0.95rem;
+    flex: 1;
+    text-align: center;
+  }
+}
+
+/* Mobile Features Bar */
+.hero-mobile-features {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 100dvh;
     flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
+    overflow: visible;
+  }
+
+  .hero-background {
+    position: relative;
+    height: 80dvh;
+  }
+
+  .hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+
+  .hero-mobile-features {
+    display: flex;
+    background: #111111;
+    color: white;
+    padding: 2.5rem 1rem;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .feature-item {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-icon {
+    color: var(--color-accent-yellow, #FFC107);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-item h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+    letter-spacing: 0.5px;
+  }
+
+  .feature-item p {
+    font-size: 0.65rem;
+    color: #aaaaaa;
+    line-height: 1.4;
+    margin: 0;
   }
 }
