@@ -2,6 +2,7 @@ import React from 'react';
 import SEO from '../components/seo/SEO';
 import MeetCoach from '../components/coach/MeetCoach';
 import AboutAcademy from '../components/about/AboutAcademy';
+import AnnualCompetition from '../components/events/AnnualCompetition';
 import WhyChooseUs from '../components/whychooseus/WhyChooseUs';
 import Footer from '../components/Footer';
 
@@ -15,6 +16,7 @@ const About = () => {
       />
       <div style={{ paddingTop: '80px' }}>
         <AboutAcademy />
+        <AnnualCompetition />
         <MeetCoach />
         <WhyChooseUs />
         <Footer />

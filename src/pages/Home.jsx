@@ -4,6 +4,7 @@ import { localBusinessSchema, faqSchema } from '../data/schema';
 import HeroSection from '../components/hero/HeroSection';
 import InteractiveTarget from '../components/target/InteractiveTarget';
 import WhyChooseUs from '../components/whychooseus/WhyChooseUs';
+import AnnualCompetition from '../components/events/AnnualCompetition';
 import MeetCoach from '../components/coach/MeetCoach';
 import AboutAcademy from '../components/about/AboutAcademy';
 import AchievementsSection from '../components/achievements/AchievementsSection';
@@ -24,6 +25,7 @@ const Home = () => {
       <HeroSection />
       <InteractiveTarget />
       <WhyChooseUs />
+      <AnnualCompetition />
       <MeetCoach />
       <AboutAcademy />
       <AchievementsSection />
