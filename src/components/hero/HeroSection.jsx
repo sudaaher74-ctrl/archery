@@ -19,9 +19,9 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           >
-            <span style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>Aim high Foundation</span> <br />
+            <span style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>Aim high foundation</span> <br />
             <span style={{ color: '#111111' }}>Present's</span> <br />
-            <span style={{ color: 'var(--color-accent-blue)' }}>Drona Archery</span> <br />
+            <span style={{ color: 'var(--color-accent-blue)' }}>Drona archery</span> <br />
             <span style={{ color: 'var(--color-accent-red)' }}>Academy</span> <br />
             <span style={{ color: 'var(--color-accent-yellow)' }}>Panvel</span>
           </motion.h1>
