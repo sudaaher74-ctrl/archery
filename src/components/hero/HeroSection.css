@@ -41,7 +41,7 @@
 }
 
 .hero-text {
-  max-width: 800px;
+  max-width: 500px; /* Constrained to avoid overlapping the person on the right */
 }
 
 .hero-text h1 {

@@ -26,15 +26,7 @@ const HeroSection = () => {
             <span style={{ color: 'var(--color-accent-yellow)' }}>Panvel</span>
           </motion.h1>
 
-          <motion.p
-            style={{ color: '#111111', fontSize: '1.1rem', marginBottom: '2rem', maxWidth: '600px', fontWeight: '500' }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            Located in New Panvel, Navi Mumbai and serving students from Panvel, Kharghar, Kamothe, Kalamboli, Thane, Raigad and surrounding areas.
-          </motion.p>
-          
+
           <motion.div 
             className="hero-buttons"
             initial={{ opacity: 0, y: 30 }}
