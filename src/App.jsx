@@ -9,6 +9,7 @@ import About from './pages/About';
 import Programs from './pages/Programs';
 import GalleryPage from './pages/GalleryPage';
 import Contact from './pages/Contact';
+import Navbar from './components/navbar/Navbar';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <ReactLenis root>
         <Router>
           <div className="app-container">
+            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

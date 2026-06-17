@@ -81,24 +81,3 @@
     align-items: stretch;
   }
 }
-
-.hero-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.5rem 0;
-  z-index: 20;
-}
-
-.hero-header .container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-logo {
-  height: 120px;
-  width: auto;
-  max-width: 350px;
-  object-fit: contain;
-}
