@@ -84,3 +84,10 @@
     right: 0;
   }
 }
+
+/* Hide entirely on mobile phones, replaced by MobileBottomNav */
+@media (max-width: 768px) {
+  .navbar {
+    display: none !important;
+  }
+}
