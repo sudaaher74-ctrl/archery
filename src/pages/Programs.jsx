@@ -1,6 +1,7 @@
 import React from 'react';
 import SEO from '../components/seo/SEO';
 import InteractiveTarget from '../components/target/InteractiveTarget';
+import AnnualCompetition from '../components/events/AnnualCompetition';
 import Footer from '../components/Footer';
 
 const Programs = () => {
@@ -13,6 +14,7 @@ const Programs = () => {
       />
       <div style={{ paddingTop: '80px' }}>
         <InteractiveTarget />
+        <AnnualCompetition />
         <Footer />
       </div>
     </>
