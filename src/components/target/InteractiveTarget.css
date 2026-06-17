@@ -9,6 +9,77 @@
   overflow: hidden;
 }
 
+.target-split-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.target-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  /* Will be animated left by GSAP */
+}
+
+.target-right {
+  position: absolute;
+  right: 0;
+  width: 45vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Hidden initially */
+  padding-right: 5vw;
+}
+
+.programs-info {
+  width: 100%;
+  max-width: 500px;
+}
+
+.programs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.program-box {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  gap: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program-box:hover {
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.prog-level {
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-family: var(--font-secondary);
+}
+
+.prog-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  color: var(--color-text-main);
+}
+
+.prog-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
 .target-container {
   position: relative;
   width: 800px;
