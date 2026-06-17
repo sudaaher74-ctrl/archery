@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: clamp(700px, 56.25vw, 1000px);
   display: flex;
   align-items: center;
   overflow: hidden;

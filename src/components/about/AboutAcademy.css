@@ -1,7 +1,7 @@
 .about-section {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: clamp(700px, 56.25vw, 1000px);
   display: flex;
   overflow: hidden;
   background-color: var(--color-bg);
