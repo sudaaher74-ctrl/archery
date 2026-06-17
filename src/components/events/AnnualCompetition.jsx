@@ -15,10 +15,10 @@ const AnnualCompetition = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="title-secondary">
+            <h2 className="title-secondary" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}>
               <span style={{ color: 'var(--color-accent-red)' }}>Annual</span> Archery <br/> Championship
             </h2>
-            <p className="text-body" style={{ marginTop: '1.5rem', fontSize: '1.1rem' }}>
+            <p className="text-body" style={{ marginTop: '1rem', fontSize: '1rem' }}>
               Every year, Drona Archery Academy proudly organizes a massive state-level archery competition. 
               Held at the sprawling grounds of <strong>Karnala Sports Academy in New Panvel</strong>, 
               this highly anticipated event brings together a huge number of teams and talented archers from across the region to compete for glory.
