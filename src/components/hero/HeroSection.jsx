@@ -14,16 +14,16 @@ const HeroSection = () => {
       <div className="container hero-content">
         <div className="hero-text">
           <motion.h1 
-            className="title-primary"
+            className="title-primary hero-title-small"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           >
-            MASTER <br />
-            PRECISION. <br />
-            <span className="title-gold">BUILD FOCUS.</span> <br />
-            BECOME A <br />
-            CHAMPION.
+            <span style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>AIM HIGH</span> <br />
+            <span style={{ color: '#111111' }}>FOUNDATION.</span> <br />
+            <span style={{ color: 'var(--color-accent-blue)' }}>DEONA</span> <br />
+            <span style={{ color: 'var(--color-accent-red)' }}>ARCHERY</span> <br />
+            <span style={{ color: 'var(--color-accent-yellow)' }}>ACADEMY.</span>
           </motion.h1>
           
           <motion.div 
