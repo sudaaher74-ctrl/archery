@@ -8,22 +8,21 @@ const HeroSection = () => {
       <div className="hero-background">
         {/* We use the requested user image */}
         <img src="/home.png" alt="Professional Archer" className="hero-img" />
-        <div className="hero-overlay"></div>
       </div>
       
       <div className="container hero-content">
         <div className="hero-text">
           <motion.h1 
-            className="title-primary"
+            className="title-primary hero-title-small"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           >
-            MASTER <br />
-            PRECISION. <br />
-            <span className="title-gold">BUILD FOCUS.</span> <br />
-            BECOME A <br />
-            CHAMPION.
+            <span style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>MASTER</span> <br />
+            <span style={{ color: '#111111' }}>PRECISION.</span> <br />
+            <span style={{ color: 'var(--color-accent-blue)' }}>BUILD FOCUS.</span> <br />
+            <span style={{ color: 'var(--color-accent-red)' }}>BECOME A</span> <br />
+            <span style={{ color: 'var(--color-accent-yellow)' }}>CHAMPION.</span>
           </motion.h1>
           
           <motion.div 
