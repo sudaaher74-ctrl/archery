@@ -1,0 +1,90 @@
+.achievements-section {
+  background-color: var(--color-bg);
+}
+
+.achievements-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.achievements-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 300px;
+  gap: 1.5rem;
+}
+
+.achievement-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+.achievement-card.large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.achievement-card.small {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.achievement-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 1s ease;
+}
+
+.achievement-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.2) 100%);
+  z-index: 1;
+}
+
+.achievement-content {
+  position: relative;
+  z-index: 2;
+}
+
+.achievement-count {
+  font-family: var(--font-secondary);
+  font-size: 4rem;
+  font-weight: 600;
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.achievement-card:hover .achievement-img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .achievements-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievement-card.large,
+  .achievement-card.small {
+    grid-column: span 1;
+  }
+}

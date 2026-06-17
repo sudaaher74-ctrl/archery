@@ -1,0 +1,135 @@
+.about-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.about-image-wrapper {
+  width: 70%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.about-gradient {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--color-bg));
+}
+
+.about-content {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-right: 5%;
+  position: relative;
+  z-index: 2;
+}
+
+.about-stats-container {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 3rem;
+  border-radius: 20px;
+  gap: 3rem;
+  margin-left: -50px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.stat-label {
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+}
+
+.stat-divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-border);
+}
+
+@media (max-width: 1024px) {
+  .about-section {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .about-image-wrapper {
+    width: 100%;
+    height: 60vh;
+  }
+  
+  .about-gradient {
+    width: 100%;
+    height: 40%;
+    bottom: 0;
+    top: auto;
+    background: linear-gradient(to top, var(--color-bg), transparent);
+  }
+  
+  .about-content {
+    width: 100%;
+    padding: 2rem 5%;
+    justify-content: center;
+    margin-top: -100px;
+  }
+  
+  .about-stats-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-left: 0;
+    padding: 2.5rem;
+    gap: 1.5rem;
+  }
+  
+  .stat-divider {
+    width: 2px;
+    height: 40px;
+  }
+  
+  .stat-number {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-stats-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .stat-divider {
+    width: 100%;
+    height: 1px;
+  }
+}
