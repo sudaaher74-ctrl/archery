@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { ReactLenis } from 'lenis/react';
 import HeroSection from './components/hero/HeroSection';
+import TrainingPrograms from './components/programs/TrainingPrograms';
 import AboutAcademy from './components/about/AboutAcademy';
 import WhyChooseUs from './components/whychooseus/WhyChooseUs';
 import InteractiveTarget from './components/target/InteractiveTarget';
@@ -16,6 +17,7 @@ function App() {
     <ReactLenis root>
       <div className="app-container">
         <HeroSection />
+        <TrainingPrograms />
         <AboutAcademy />
         <WhyChooseUs />
         <InteractiveTarget />
