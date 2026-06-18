@@ -74,16 +74,6 @@ const AboutAcademy = () => {
           >
             <div className="stat-item">
               <div className="stat-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-              </div>
-              <h3 className="stat-number">12+</h3>
-              <p className="stat-label">YEARS OF EXCELLENCE</p>
-            </div>
-            
-            <div className="stat-divider"></div>
-            
-            <div className="stat-item">
-              <div className="stat-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
               </div>
               <h3 className="stat-number"><Counter to={300} />+</h3>
@@ -102,7 +92,7 @@ const AboutAcademy = () => {
 
             <div className="stat-divider"></div>
             
-            <div className="stat-item" style={{ flex: 1.5 }}>
+            <div className="stat-item">
               <div className="stat-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-yellow, #FFC107)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
               </div>

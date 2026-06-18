@@ -141,12 +141,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-padding {
-  padding: 10rem 0;
+  padding: 5rem 0;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
   
   .mobile-hidden {
