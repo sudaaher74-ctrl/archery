@@ -27,8 +27,9 @@ const MeetCoach = () => {
               
               <div className="coach-credentials">
                 <p className="credential-item">National Medalist</p>
-                <p className="credential-item">Maharashtra Team Coach</p>
-                <p className="credential-item">PAN INDIA NIS CERTIFIED Level 1 & 2</p>
+                <p className="credential-item">NIS CERTIFIED coach</p>
+                <p className="credential-item">Pan india level 1 level 2 qualified</p>
+                <p className="credential-item">Maharashtra team coach</p>
                 <p className="credential-item">Indian, Compound & Recurve</p>
                 <p className="credential-item">12+ Years Experience</p>
               </div>
