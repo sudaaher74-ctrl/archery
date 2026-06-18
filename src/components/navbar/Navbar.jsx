@@ -36,7 +36,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Link to="/contact" className="btn btn-primary nav-cta" onClick={() => setIsOpen(false)}>
-            Book Trial
+            Join Us
           </Link>
         </div>
 
