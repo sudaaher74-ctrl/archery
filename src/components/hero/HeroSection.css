@@ -1,21 +1,30 @@
 .hero {
   position: relative;
   width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
+  background-color: var(--color-bg);
 }
 
 .hero-background {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
   z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .hero-overlay {
@@ -28,13 +37,11 @@
 }
 
 .hero-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: relative;
   z-index: 10;
   display: flex;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: flex-end;
 }
