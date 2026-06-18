@@ -2,7 +2,6 @@ import React from 'react';
 import SEO from '../components/seo/SEO';
 import { localBusinessSchema, faqSchema } from '../data/schema';
 import HeroSection from '../components/hero/HeroSection';
-import AnnualCompetition from '../components/events/AnnualCompetition';
 import MeetCoach from '../components/coach/MeetCoach';
 import AboutAcademy from '../components/about/AboutAcademy';
 import AchievementsSection from '../components/achievements/AchievementsSection';
@@ -23,7 +22,6 @@ const Home = () => {
       <HeroSection />
       <MeetCoach />
       <AboutAcademy />
-      <AnnualCompetition />
       <div className="mobile-hidden"><AchievementsSection /></div>
       <div className="mobile-hidden"><Gallery /></div>
       <div className="mobile-hidden"><Testimonials /></div>
