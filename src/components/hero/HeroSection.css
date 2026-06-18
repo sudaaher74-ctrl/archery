@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background-color: var(--color-bg);
 }
 
 .hero-background {
@@ -14,14 +13,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: -1;
 }
 
 .hero-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: right center; /* Focuses on the right side where the archer is */
 }
 
 .hero-overlay {
@@ -37,7 +36,6 @@
   position: relative;
   z-index: 10;
   display: flex;
-  width: 100%;
   height: 100%;
   align-items: center;
   justify-content: flex-end;
