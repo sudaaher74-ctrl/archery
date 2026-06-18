@@ -9,7 +9,7 @@ const FullScreenCTA = () => {
           <div className="cta-text-content">
             <h2 className="cta-title">READY TO HIT YOUR TARGET?</h2>
             <p className="cta-desc">
-              Join Archery Alpha today and start your journey towards greatness.
+              Join Drona Archery Academy today and start your journey towards greatness.
             </p>
           </div>
           <button className="cta-enroll-btn">

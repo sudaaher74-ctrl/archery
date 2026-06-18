@@ -26,13 +26,15 @@ const MeetCoach = () => {
               <h2 className="title-secondary">MEET THE <span className="title-gold">COACH</span></h2>
               
               <div className="coach-credentials">
-                <p className="credential-item">Certified Master Coach</p>
-                <p className="credential-item">National Level Archer</p>
-                <p className="credential-item">10+ Years Experience</p>
+                <p className="credential-item">National Medalist</p>
+                <p className="credential-item">Maharashtra Team Coach</p>
+                <p className="credential-item">PAN INDIA NIS CERTIFIED Level 1 & 2</p>
+                <p className="credential-item">Indian, Compound & Recurve</p>
+                <p className="credential-item">12+ Years Experience</p>
               </div>
               
               <div className="coach-signature">
-                Sidhi deshmukha
+                Mukesh Gurdale
               </div>
             </motion.div>
           </div>

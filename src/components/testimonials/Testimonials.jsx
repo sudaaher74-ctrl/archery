@@ -6,7 +6,7 @@ const testimonials = [
   {
     name: 'Sarah Jenkins',
     role: 'State Champion',
-    quote: '"AURA transformed my technique and mindset. Truly world-class."',
+    quote: '"Drona Archery Academy transformed my technique and mindset. Truly world-class."',
     img: '/aboutus.png' // re-using image
   },
   {
