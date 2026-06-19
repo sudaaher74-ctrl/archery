@@ -35,9 +35,9 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <Link to="/contact" className="btn btn-primary nav-cta" onClick={() => setIsOpen(false)}>
+          <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="btn btn-primary nav-cta" onClick={() => setIsOpen(false)}>
             Join Us
-          </Link>
+          </a>>
         </div>
 
         <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)}>

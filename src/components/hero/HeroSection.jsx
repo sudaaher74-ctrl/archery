@@ -33,7 +33,9 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
           >
-            <button className="btn btn-primary">Join Us</button>
+            <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="btn btn-primary" style={{ textDecoration: 'none' }}>
+              Join Us
+            </a>
             <button className="btn btn-outline play-btn">
               <Play size={20} fill="currentColor" /> Watch Video
             </button>
