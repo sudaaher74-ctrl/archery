@@ -2,7 +2,7 @@
   position: fixed;
   width: 60px;
   height: 60px;
-  bottom: 80px; /* Above mobile bottom nav if present */
+  bottom: 120px; /* Above mobile bottom nav */
   right: 20px;
   background-color: #25d366;
   color: #FFF;
@@ -10,7 +10,7 @@
   text-align: center;
   font-size: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
