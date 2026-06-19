@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import './Gallery.css';
 
 const galleryImages = [
-  '/home.png',
-  '/aboutus.png',
-  '/team.png',
-  '/coach.png',
-  '/home.png',
-  '/team.png'
+  '/achivments1.png',
+  '/achivements2.png',
+  '/achivments4.png',
+  '/achivements5.png',
+  '/achivements6.png',
+  '/achivements7.png'
 ];
 
 const Gallery = () => {

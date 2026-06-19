@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import './AchievementsSection.css';
 
 const achievements = [
-  { count: '12', title: 'National Titles', img: '/team.png', size: 'large' },
+  { count: '12', title: 'National Titles', img: '/achivments1.png', size: 'large' },
   { count: '45', title: 'State Medals', img: '', size: 'small' },
-  { count: '08', title: 'Olympic Qualifiers', img: '/home.png', size: 'large' },
+  { count: '08', title: 'Olympic Qualifiers', img: '/achivements5.png', size: 'large' },
   { count: '150+', title: 'Tournament Wins', img: '', size: 'small' },
 ];
 
