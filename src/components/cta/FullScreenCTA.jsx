@@ -14,7 +14,7 @@ const FullScreenCTA = () => {
           </div>
           <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="cta-enroll-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
             ENROLL NOW &rarr;
-          </a>>
+          </a>
         </div>
       </div>
     </section>
