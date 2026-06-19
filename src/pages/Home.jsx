@@ -4,7 +4,6 @@ import { localBusinessSchema, faqSchema } from '../data/schema';
 import HeroSection from '../components/hero/HeroSection';
 import MeetCoach from '../components/coach/MeetCoach';
 import AboutAcademy from '../components/about/AboutAcademy';
-import AchievementsSection from '../components/achievements/AchievementsSection';
 import Gallery from '../components/gallery/Gallery';
 import Testimonials from '../components/testimonials/Testimonials';
 import FullScreenCTA from '../components/cta/FullScreenCTA';
@@ -22,7 +21,6 @@ const Home = () => {
       <HeroSection />
       <MeetCoach />
       <AboutAcademy />
-      <div className="mobile-hidden"><AchievementsSection /></div>
       <div className="mobile-hidden"><Gallery /></div>
       <div className="mobile-hidden"><Testimonials /></div>
       <div className="mobile-hidden"><FullScreenCTA /></div>

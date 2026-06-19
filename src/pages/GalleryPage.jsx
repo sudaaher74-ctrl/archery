@@ -1,7 +1,6 @@
 import React from 'react';
 import SEO from '../components/seo/SEO';
 import Gallery from '../components/gallery/Gallery';
-import AchievementsSection from '../components/achievements/AchievementsSection';
 import AnnualCompetition from '../components/events/AnnualCompetition';
 import Footer from '../components/Footer';
 
@@ -16,7 +15,6 @@ const GalleryPage = () => {
       <div style={{ paddingTop: '80px' }}>
         <Gallery />
         <AnnualCompetition />
-        <AchievementsSection />
         <Footer />
       </div>
     </>
