@@ -28,10 +28,10 @@ function App() {
               <Route path="/contact" element={<Contact />} />
             </Routes>
             <MobileBottomNav />
-            <WhatsAppButton />
           </div>
         </Router>
       </ReactLenis>
+      <WhatsAppButton />
     </HelmetProvider>
   );
 }
