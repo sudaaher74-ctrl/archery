@@ -69,9 +69,6 @@ const IGTSection = () => {
               <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="btn btn-primary" style={{ textDecoration: 'none' }}>
                 Join Academy
               </a>
-              <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="btn btn-outline" style={{ textDecoration: 'none' }}>
-                Book Free Trial
-              </a>
             </div>
           </motion.div>
         </div>
