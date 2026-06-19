@@ -18,13 +18,17 @@ const AnnualCompetition = () => {
           >
             <Trophy size={60} color="var(--color-gold)" className="event-icon" />
             <h2 className="title-secondary text-white">
-              The Annual Archery <span style={{ color: 'var(--color-accent-red)' }}>Championship</span>
+              DRONA <span style={{ color: 'var(--color-accent-red)' }}>CUP</span>
             </h2>
-            <p className="text-body text-light" style={{ maxWidth: '800px', margin: '1rem auto 2rem' }}>
-              Every year, Drona Archery Academy proudly organizes a massive state-level archery competition. 
-              Held at the sprawling grounds of <strong>Karnala Sports Academy in New Panvel</strong>, 
-              this highly anticipated event brings together talented archers from across the region to compete for glory.
+            <p className="text-body text-light" style={{ maxWidth: '800px', margin: '1rem auto 1rem' }}>
+              For the past 5 years, DRONA CUP has been one of Maharashtra's most exciting annual archery championships, organized by Drona Archery Academy. Every year, the event welcomes 300+ archers from across the state, competing in Indian Round, Recurve, and Compound categories.
             </p>
+            <p className="text-body text-light" style={{ maxWidth: '800px', margin: '0 auto 2rem' }}>
+              With divisions ranging from U10 to Open, DRONA CUP provides a professional platform for athletes of all ages to showcase their talent, gain competitive experience, and strive for excellence.
+            </p>
+            <h4 style={{ color: 'var(--color-gold)', marginBottom: '2rem', letterSpacing: '1px' }}>
+              5 Years • 300+ Participants • U10 to Open • Archers from Across Maharashtra 🏹🏆
+            </h4>
           </motion.div>
           
           <motion.div 
@@ -36,18 +40,18 @@ const AnnualCompetition = () => {
           >
             <div className="glass-card">
               <Users size={32} color="var(--color-accent-blue)" />
-              <h4>Huge Participation</h4>
-              <p>Dozens of regional teams</p>
+              <h4>300+ Archers</h4>
+              <p>Participants from across Maharashtra</p>
             </div>
             <div className="glass-card">
-              <MapPin size={32} color="var(--color-accent-red)" />
-              <h4>Premium Venue</h4>
-              <p>Karnala Sports Academy</p>
+              <Trophy size={32} color="var(--color-accent-red)" />
+              <h4>Categories</h4>
+              <p>Indian Round, Recurve & Compound</p>
             </div>
             <div className="glass-card">
               <Calendar size={32} color="var(--color-accent-yellow)" />
-              <h4>Annual Event</h4>
-              <p>Organized every year</p>
+              <h4>5 Years</h4>
+              <p>Annual championship legacy</p>
             </div>
           </motion.div>
         </div>
