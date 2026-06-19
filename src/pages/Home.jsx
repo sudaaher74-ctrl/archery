@@ -8,6 +8,7 @@ import WhyChooseUs from '../components/whychooseus/WhyChooseUs';
 import Gallery from '../components/gallery/Gallery';
 import IGTSection from '../components/igt/IGTSection';
 import Testimonials from '../components/testimonials/Testimonials';
+import FunSessions from '../components/funsessions/FunSessions';
 import FullScreenCTA from '../components/cta/FullScreenCTA';
 import Footer from '../components/Footer';
 
@@ -27,6 +28,7 @@ const Home = () => {
       <IGTSection />
       <div className="mobile-hidden"><Gallery /></div>
       <div className="mobile-hidden"><Testimonials /></div>
+      <FunSessions />
       <div className="mobile-hidden"><FullScreenCTA /></div>
       <Footer />
     </>
