@@ -5,6 +5,7 @@ import HeroSection from '../components/hero/HeroSection';
 import MeetCoach from '../components/coach/MeetCoach';
 import AboutAcademy from '../components/about/AboutAcademy';
 import Gallery from '../components/gallery/Gallery';
+import IGTSection from '../components/igt/IGTSection';
 import Testimonials from '../components/testimonials/Testimonials';
 import FullScreenCTA from '../components/cta/FullScreenCTA';
 import Footer from '../components/Footer';
@@ -21,6 +22,8 @@ const Home = () => {
       <HeroSection />
       <MeetCoach />
       <AboutAcademy />
+      <WhyChooseUs />
+      <IGTSection />
       <div className="mobile-hidden"><Gallery /></div>
       <div className="mobile-hidden"><Testimonials /></div>
       <div className="mobile-hidden"><FullScreenCTA /></div>

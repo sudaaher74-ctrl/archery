@@ -1,0 +1,187 @@
+.igt-section {
+  background-color: #050505; /* Deep dark background */
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.igt-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(224, 26, 34, 0.15) 0%, rgba(0, 0, 0, 0) 70%); /* Red glow */
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.igt-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Image Wrapper */
+.igt-image-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  height: 100%;
+  min-height: 500px;
+  border: 1px solid rgba(255, 184, 0, 0.2); /* Subtle gold border */
+}
+
+.igt-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.igt-image-wrapper:hover .igt-img {
+  transform: scale(1.05);
+}
+
+.igt-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%), linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Content */
+.igt-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.igt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 184, 0, 0.1);
+  color: #FFB800; /* True gold */
+  border: 1px solid rgba(255, 184, 0, 0.2);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: fit-content;
+}
+
+.igt-title {
+  color: #fff;
+  line-height: 1.2;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.igt-title .title-gold {
+  color: #FFB800; /* Gold accent */
+  -webkit-text-fill-color: initial;
+  background: none;
+}
+
+.igt-desc {
+  color: #aaa;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Grid Cards */
+.igt-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.igt-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.igt-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 184, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.igt-card-icon {
+  color: #FFB800;
+  flex-shrink: 0;
+}
+
+.igt-card span {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* CTAs */
+.igt-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.igt-ctas .btn-outline {
+  border-color: rgba(255,255,255,0.3);
+  color: #fff;
+}
+
+.igt-ctas .btn-outline:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .igt-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .igt-image-wrapper {
+    min-height: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  .igt-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .igt-ctas {
+    flex-direction: column;
+  }
+  
+  .igt-ctas .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
