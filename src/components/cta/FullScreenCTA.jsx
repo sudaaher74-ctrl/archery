@@ -12,9 +12,9 @@ const FullScreenCTA = () => {
               Join Drona Archery Academy today and start your journey towards greatness.
             </p>
           </div>
-          <button className="cta-enroll-btn">
+          <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="cta-enroll-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
             ENROLL NOW &rarr;
-          </button>
+          </a>>
         </div>
       </div>
     </section>

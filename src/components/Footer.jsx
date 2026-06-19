@@ -17,6 +17,7 @@ const Footer = () => {
               <h4>Contact</h4>
               <a href="mailto:dronaarchery@gmail.com">dronaarchery@gmail.com</a>
               <a href="tel:+919699414848">+91 9699414848</a>
+              <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer">WhatsApp Us</a>
             </div>
             
             <div className="footer-col">

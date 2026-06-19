@@ -11,6 +11,7 @@ import GalleryPage from './pages/GalleryPage';
 import Contact from './pages/Contact';
 import Navbar from './components/navbar/Navbar';
 import MobileBottomNav from './components/navbar/MobileBottomNav';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
             </Routes>
             <MobileBottomNav />
+            <WhatsAppButton />
           </div>
         </Router>
       </ReactLenis>
