@@ -1,14 +1,10 @@
-.cinematic-container {
-  height: 800vh; /* Extremely tall to allow slow, precise scrubbing */
-}
-
-.archery-scroll-container {
+.parallax-scroll-container {
+  height: 600vh; /* Scroll length */
+  background-color: #050505;
   position: relative;
-  width: 100%;
-  background-color: #0a0f12;
 }
 
-.archery-pinned-section {
+.parallax-pinned-section {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -16,24 +12,82 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  perspective: 1000px;
 }
 
-.archery-canvas-wrapper {
+/* Layers */
+.plax-layer {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+
+.bg-layer {
+  background: radial-gradient(circle at center, #1a202c 0%, #050505 100%);
   z-index: 1;
 }
 
-.archery-text-overlay {
+.target-layer {
+  z-index: 2;
+}
+
+.target-svg {
+  width: 15vw;
+  height: 15vw;
+  min-width: 150px;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+}
+
+.archer-layer {
+  z-index: 3;
+}
+
+.archer-placeholder {
+  width: 40vw;
+  height: 80vh;
+  background: linear-gradient(to top, rgba(224, 26, 34, 0.2), transparent);
+  border-radius: 200px 200px 0 0;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2rem;
+  color: rgba(255,255,255,0.5);
+  font-family: monospace;
+}
+
+.bow-layer {
+  z-index: 4;
+}
+
+.bow-svg {
+  height: 120vh; /* Bow is massive in foreground */
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.8));
+}
+
+.arrow-layer {
+  z-index: 5;
+}
+
+.arrow-svg {
+  width: 50vw;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+}
+
+/* Typography Overlays */
+.plax-text-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 10;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -41,36 +95,49 @@
   align-items: center;
 }
 
-.archery-main-title {
+.plax-main-title {
   position: absolute;
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 800;
   color: #fff;
   text-align: center;
-  letter-spacing: 2px;
-  max-width: 800px;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  letter-spacing: -1px;
+  max-width: 900px;
+  text-shadow: 0 10px 40px rgba(0,0,0,0.9);
+  padding: 0 20px;
 }
 
-.archery-cinematic-text {
+.plax-step-text {
   position: absolute;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(4rem, 10vw, 8rem);
   font-weight: 400;
   color: #fff;
   text-align: center;
-  letter-spacing: 10px;
-  opacity: 0; /* Handled by GSAP */
-  transform: translateY(30px) scale(0.95);
+  letter-spacing: 5px;
+  opacity: 0;
   text-shadow: 0 10px 30px rgba(0,0,0,0.9);
 }
 
-.archery-impact-text {
+.plax-impact-text {
   font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  font-size: clamp(5rem, 12vw, 10rem);
   color: #E01A22; /* Brand Red */
-  letter-spacing: -2px;
+  letter-spacing: -3px;
   text-transform: uppercase;
+  text-shadow: 0 0 50px rgba(224, 26, 34, 0.5);
+}
+
+.plax-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
 }

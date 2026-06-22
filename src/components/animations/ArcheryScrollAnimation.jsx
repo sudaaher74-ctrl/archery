@@ -1,275 +1,103 @@
-import React, { useEffect, useRef, useState, Suspense } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, ContactShadows, PerspectiveCamera, Html } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ErrorBoundary } from './ErrorBoundary';
-import ArcherModel from './ArcherModel';
 import './ArcheryScrollAnimation.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// --- Particle Systems ---
-const DustParticles = () => {
-  const count = 500;
-  const mesh = useRef();
-  
-  const dummy = new THREE.Object3D();
-  const particles = useRef(
-    new Array(count).fill().map(() => ({
-      x: (Math.random() - 0.5) * 20,
-      y: (Math.random() - 0.5) * 10 + 5,
-      z: (Math.random() - 0.5) * 20,
-      speed: 0.01 + Math.random() * 0.02,
-      offset: Math.random() * 100,
-    }))
-  );
+// --- SVG Assets (To be replaced with PNGs) ---
 
-  useFrame((state) => {
-    particles.current.forEach((particle, i) => {
-      const t = state.clock.getElapsedTime();
-      dummy.position.set(
-        particle.x + Math.sin(t * particle.speed + particle.offset) * 2,
-        particle.y + Math.cos(t * particle.speed * 0.5 + particle.offset) * 2,
-        particle.z + Math.sin(t * particle.speed * 0.8 + particle.offset) * 2
-      );
-      dummy.updateMatrix();
-      mesh.current.setMatrixAt(i, dummy.matrix);
-    });
-    mesh.current.instanceMatrix.needsUpdate = true;
-  });
-
-  return (
-    <instancedMesh ref={mesh} args={[null, null, count]}>
-      <sphereGeometry args={[0.02, 8, 8]} />
-      <meshBasicMaterial color="#ffffff" transparent opacity={0.3} />
-    </instancedMesh>
-  );
-};
-
-// --- Arrow Object ---
-const TravelingArrow = ({ scrollProgress }) => {
-  const arrowRef = useRef();
-
-  useFrame(() => {
-    if (!arrowRef.current) return;
-    const p = scrollProgress.current;
-
-    // Arrow logic matching GSAP timeline:
-    // 0-80% Arrow is held by archer (we assume ArcherModel hides its own arrow or we hide this one)
-    // Actually, if ArcherModel has an arrow baked in, we hide this one until release (80-90%).
-    // For a highly modular approach, this standalone arrow appears only at Release (80%) 
-    // and travels to the target (90%).
-
-    if (p < 0.80) {
-      arrowRef.current.visible = false;
-      arrowRef.current.position.set(0, 1.5, 0); // starting pos at bow
-    } else if (p >= 0.80 && p < 0.90) {
-      arrowRef.current.visible = true;
-      const travelP = (p - 0.80) / 0.10;
-      arrowRef.current.position.x = THREE.MathUtils.lerp(0, 29, travelP);
-      // Motion blur effect could be scaling the arrow length
-      arrowRef.current.scale.y = THREE.MathUtils.lerp(1, 3, Math.sin(travelP * Math.PI));
-    } else {
-      arrowRef.current.visible = true;
-      arrowRef.current.position.x = 29;
-      arrowRef.current.scale.y = 1;
-      
-      // Impact shake logic could go here
-    }
-  });
-
-  return (
-    <group ref={arrowRef} visible={false} rotation={[0, 0, -Math.PI / 2]}>
-      <mesh>
-        <cylinderGeometry args={[0.02, 0.02, 3, 8]} />
-        <meshStandardMaterial color="#222" />
-      </mesh>
-      <mesh position={[0, 1.5, 0]}>
-        <coneGeometry args={[0.06, 0.2, 8]} />
-        <meshStandardMaterial color="silver" metalness={1} roughness={0.2} />
-      </mesh>
-    </group>
-  );
-};
-
-const Target = () => {
-  return (
-    <group position={[30, 0, 0]} rotation={[0, -Math.PI / 2, 0]}>
-      <mesh position={[0, 1.5, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[2, 2, 0.2, 64]} />
-        <meshStandardMaterial color="#fff" roughness={0.8} />
-      </mesh>
-      {/* Target rings */}
-      <mesh position={[0, 1.61, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[1.2, 1.6, 64]} />
-        <meshBasicMaterial color="#111" side={THREE.DoubleSide} />
-      </mesh>
-      <mesh position={[0, 1.62, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[0.8, 1.2, 64]} />
-        <meshBasicMaterial color="#0072B5" side={THREE.DoubleSide} />
-      </mesh>
-      <mesh position={[0, 1.63, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[0.4, 0.8, 64]} />
-        <meshBasicMaterial color="#E01A22" side={THREE.DoubleSide} />
-      </mesh>
-      <mesh position={[0, 1.64, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[0, 0.4, 64]} />
-        <meshBasicMaterial color="#FFB800" side={THREE.DoubleSide} />
-      </mesh>
-      {/* Stand */}
-      <mesh position={[0, -0.5, -0.5]} rotation={[-0.2, 0, 0]}>
-        <cylinderGeometry args={[0.05, 0.05, 4]} />
-        <meshStandardMaterial color="#4a3b2c" />
-      </mesh>
-      <mesh position={[0, -0.5, 0.5]} rotation={[0.2, 0, 0]}>
-        <cylinderGeometry args={[0.05, 0.05, 4]} />
-        <meshStandardMaterial color="#4a3b2c" />
-      </mesh>
-    </group>
-  );
-};
-
-// --- Cinematic Camera ---
-const CinematicCamera = ({ scrollProgress }) => {
-  const cameraRef = useRef();
-
-  useFrame((state) => {
-    if (!cameraRef.current) return;
-    const p = scrollProgress.current;
-
-    // Timeline camera mapping:
-    // 0-20% Stance: Slow move closer
-    // 20-40% Load: Closer, focus on hands
-    // 40-60% Aim: Slight rotation around character
-    // 60-80% Draw: Zoom toward target
-    // 80-90% Release: Follow arrow
-    // 90-100% Impact: Shake and look at bullseye
-
-    let targetX = 0, targetY = 1.5, targetZ = 0;
-    let camX = -3, camY = 1.5, camZ = 4;
-
-    if (p < 0.2) {
-      const t = p / 0.2;
-      camX = THREE.MathUtils.lerp(-4, -2.5, t);
-      camZ = THREE.MathUtils.lerp(5, 3.5, t);
-    } 
-    else if (p < 0.4) {
-      const t = (p - 0.2) / 0.2;
-      camX = -2.5;
-      camY = THREE.MathUtils.lerp(1.5, 1.2, t);
-      camZ = THREE.MathUtils.lerp(3.5, 2.5, t);
-    } 
-    else if (p < 0.6) {
-      const t = (p - 0.4) / 0.2;
-      // Rotate around
-      const angle = THREE.MathUtils.lerp(0, -Math.PI/6, t);
-      camX = -2.5 * Math.cos(angle) - 2.5 * Math.sin(angle);
-      camZ = 2.5 * Math.cos(angle) - (-2.5) * Math.sin(angle);
-      targetX = THREE.MathUtils.lerp(0, 5, t); // Start looking toward target
-    } 
-    else if (p < 0.8) {
-      const t = (p - 0.6) / 0.2;
-      // Draw bow, camera zooms dramatically over shoulder
-      camX = THREE.MathUtils.lerp(-1.5, -0.5, t);
-      camY = 1.6;
-      camZ = THREE.MathUtils.lerp(2, 0.5, t);
-      targetX = 30; // Look at target
-    } 
-    else if (p < 0.9) {
-      const t = (p - 0.8) / 0.1;
-      // Follow arrow
-      camX = THREE.MathUtils.lerp(-0.5, 20, t);
-      camZ = THREE.MathUtils.lerp(0.5, 2, t);
-      targetX = 30;
-    } 
-    else {
-      // Impact & Shake
-      const t = (p - 0.9) / 0.1;
-      camX = 25;
-      camZ = 3;
-      targetX = 30;
-      
-      // Camera shake
-      if (t < 0.2) {
-        camX += (Math.random() - 0.5) * 0.2;
-        camY += (Math.random() - 0.5) * 0.2;
-      }
-    }
-
-    // Smoothly interpolate current camera position
-    cameraRef.current.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.1);
-    
-    // Smoothly interpolate look target
-    const currentLookAt = new THREE.Vector3(0, 0, 0);
-    // We store a custom property to track lookAt smoothing
-    if (!cameraRef.current.userData.lookTarget) {
-      cameraRef.current.userData.lookTarget = new THREE.Vector3(0, 1.5, 0);
-    }
-    cameraRef.current.userData.lookTarget.lerp(new THREE.Vector3(targetX, targetY, targetZ), 0.1);
-    cameraRef.current.lookAt(cameraRef.current.userData.lookTarget);
-  });
-
-  return <PerspectiveCamera ref={cameraRef} makeDefault fov={45} near={0.1} far={1000} />;
-};
-
-// --- Fallback if Model is Missing ---
-const FallbackWarning = () => (
-  <Html center position={[0, 2, 0]}>
-    <div style={{ background: 'rgba(224,26,34,0.9)', padding: '20px', borderRadius: '10px', color: 'white', textAlign: 'center', width: '300px' }}>
-      <h4>Missing Asset</h4>
-      <p>Please place your realistic <code>archer.glb</code> file in the <code>/public/models/</code> directory to view the character animation.</p>
-    </div>
-  </Html>
+const TargetSVG = () => (
+  <svg className="target-svg" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="48" fill="#fff" />
+    <circle cx="50" cy="50" r="38" fill="#111" />
+    <circle cx="50" cy="50" r="28" fill="#0072B5" />
+    <circle cx="50" cy="50" r="18" fill="#E01A22" />
+    <circle cx="50" cy="50" r="8" fill="#FFB800" />
+  </svg>
 );
 
-// --- Main Scroll Component ---
+const BowSVG = () => (
+  <svg className="bow-svg" viewBox="0 0 100 400" preserveAspectRatio="none">
+    {/* Abstract Bow Shape */}
+    <path d="M 50 10 Q 10 200 50 390" fill="none" stroke="#333" strokeWidth="8" strokeLinecap="round" />
+    <path d="M 50 10 L 50 390" fill="none" stroke="#fff" strokeWidth="2" opacity="0.8" id="bow-string" />
+  </svg>
+);
+
+const ArrowSVG = () => (
+  <svg className="arrow-svg" viewBox="0 0 400 20">
+    <rect x="20" y="8" width="360" height="4" fill="#8B4513" />
+    {/* Fletching */}
+    <polygon points="20,8 0,0 20,10" fill="#E01A22" />
+    <polygon points="20,12 0,20 20,10" fill="#E01A22" />
+    {/* Tip */}
+    <polygon points="380,6 400,10 380,14" fill="#silver" />
+  </svg>
+);
+
 const ArcheryScrollAnimation = () => {
   const containerRef = useRef(null);
-  const scrollProgress = useRef(0);
-  const textRefs = useRef([]);
+  const targetRef = useRef(null);
+  const archerRef = useRef(null);
+  const bowRef = useRef(null);
+  const arrowRef = useRef(null);
   const titleRef = useRef(null);
+  const textRefs = useRef([]);
+  const flashRef = useRef(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // We make the scroll distance huge (800vh) for fine control over the 6 steps
+    // Timeline that controls the entire sequence
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 0.5, // 0.5s smooth lag
-        pin: '.archery-pinned-section',
-        id: 'archery-scroll',
-        onUpdate: (self) => {
-          scrollProgress.current = self.progress;
-        }
+        scrub: 0.5,
+        pin: '.parallax-pinned-section',
       }
     });
 
-    // Fade out main title early
-    tl.to(titleRef.current, { opacity: 0, y: -50, duration: 0.05 }, 0.02);
+    // 1. Initial State (Focus & Prepare)
+    // Hide Title
+    tl.to(titleRef.current, { opacity: 0, y: -50, duration: 0.05 }, 0.05);
 
-    // Text Overlay Timings
-    const textTimings = [
-      { start: 0.05, end: 0.15 }, // Focus
-      { start: 0.20, end: 0.35 }, // Prepare
-      { start: 0.40, end: 0.55 }, // Aim
-      { start: 0.60, end: 0.75 }, // Release
-      { start: 0.90, end: 0.95 }, // Bullseye.
-      { start: 0.96, end: 1.00 }, // Welcome to the event
-    ];
+    // Fade in text: "Focus"
+    tl.to(textRefs.current[0], { opacity: 1, scale: 1, duration: 0.1 }, 0.05)
+      .to(textRefs.current[0], { opacity: 0, scale: 1.1, duration: 0.1 }, 0.2);
 
-    textRefs.current.forEach((ref, i) => {
-      if (!ref) return;
-      const timing = textTimings[i];
-      const duration = (timing.end - timing.start) * 0.3; // fade duration
-      
-      tl.to(ref, { opacity: 1, y: 0, scale: 1, duration: duration, ease: "power2.out" }, timing.start)
-        .to(ref, { opacity: 0, y: -20, scale: 1.05, duration: duration, ease: "power2.in" }, timing.end - duration);
-    });
+    // 2. Draw Bow & Arrow (Aim & Release)
+    tl.to(textRefs.current[1], { opacity: 1, scale: 1, duration: 0.1 }, 0.25)
+      .to(textRefs.current[1], { opacity: 0, scale: 1.1, duration: 0.1 }, 0.4);
+
+    // Bow pulls back slightly
+    tl.to(bowRef.current, { scaleX: 0.8, x: -50, duration: 0.2 }, 0.25);
+    // Arrow pulls back
+    tl.to(arrowRef.current, { x: -100, duration: 0.2 }, 0.25);
+
+    tl.to(textRefs.current[2], { opacity: 1, scale: 1, duration: 0.1 }, 0.45)
+      .to(textRefs.current[2], { opacity: 0, scale: 1.1, duration: 0.1 }, 0.6);
+
+    // 3. The Shoot (Massive Parallax Zoom)
+    // The arrow shoots forward
+    tl.to(arrowRef.current, { x: 500, scale: 0.1, duration: 0.2 }, 0.65);
+    // The bow snaps back
+    tl.to(bowRef.current, { scaleX: 1, x: -150, opacity: 0, duration: 0.1 }, 0.65);
+    // The target zooms in aggressively
+    tl.to(targetRef.current, { scale: 5, zIndex: 10, duration: 0.2 }, 0.65);
+    // The archer silhouette fades/zooms out
+    tl.to(archerRef.current, { scale: 1.5, opacity: 0, duration: 0.15 }, 0.65);
+
+    // 4. Impact (Bullseye)
+    // White flash effect
+    tl.to(flashRef.current, { opacity: 1, duration: 0.02 }, 0.84)
+      .to(flashRef.current, { opacity: 0, duration: 0.1 }, 0.86);
+
+    // Show Impact Text
+    tl.to(textRefs.current[3], { opacity: 1, scale: 1, duration: 0.05 }, 0.85)
+      .to(textRefs.current[3], { opacity: 0, scale: 1.2, duration: 0.05 }, 0.95);
 
     return () => {
       tl.kill();
@@ -277,65 +105,42 @@ const ArcheryScrollAnimation = () => {
     };
   }, []);
 
-  const stepsText = [
-    "Focus",
-    "Prepare",
-    "Aim",
-    "Release",
-    "Bullseye.",
-    "Welcome To The Event"
-  ];
+  const stepsText = ["Focus", "Aim", "Release", "BULLSEYE"];
 
   return (
-    <section ref={containerRef} className="archery-scroll-container cinematic-container">
-      <div className="archery-pinned-section">
+    <section ref={containerRef} className="parallax-scroll-container">
+      <div className="parallax-pinned-section">
         
-        {/* The 3D Scene */}
-        <div className="archery-canvas-wrapper">
-          <Canvas shadows dpr={[1, 2]}>
-            <color attach="background" args={['#0a0f12']} />
-            <fog attach="fog" args={['#0a0f12', 15, 60]} />
-            
-            {/* Cinematic Lighting */}
-            <ambientLight intensity={0.2} />
-            <directionalLight 
-              position={[10, 20, 10]} 
-              intensity={2.5} 
-              castShadow 
-              shadow-bias={-0.0001}
-              shadow-mapSize={[2048, 2048]}
-              color="#ffe5b4" // Soft sunlight
-            />
-            <spotLight 
-              position={[-5, 5, 5]} 
-              angle={0.3} 
-              penumbra={1} 
-              intensity={1.5} 
-              castShadow 
-              color="#a4d8ff" // Cool rim light
-            />
-
-            <CinematicCamera scrollProgress={scrollProgress} />
-            <DustParticles />
-            
-            {/* The Archer Model loaded from public/models/archer.glb */}
-            <ErrorBoundary>
-              <Suspense fallback={<FallbackWarning />}>
-                <ArcherModel scrollProgress={scrollProgress} position={[0, 0, 0]} />
-              </Suspense>
-            </ErrorBoundary>
-
-            <TravelingArrow scrollProgress={scrollProgress} />
-            <Target />
-
-            <ContactShadows position={[0, 0, 0]} opacity={0.6} scale={50} blur={2.5} far={10} />
-            <Environment preset="park" background blur={0.5} />
-          </Canvas>
+        {/* Layer 1: Background & Target */}
+        <div className="plax-layer bg-layer">
+          <div ref={targetRef} className="target-layer" style={{ transform: 'scale(1)' }}>
+            <TargetSVG />
+          </div>
         </div>
-        
-        {/* Apple-Style Text Overlay */}
-        <div className="archery-text-overlay">
-          <h2 ref={titleRef} className="archery-main-title">
+
+        {/* Layer 2: The Archer (Midground) */}
+        <div ref={archerRef} className="plax-layer archer-layer">
+          <div className="archer-placeholder">
+            [ ADD ARCHER.PNG HERE ]
+          </div>
+        </div>
+
+        {/* Layer 3: The Arrow */}
+        <div ref={arrowRef} className="plax-layer arrow-layer" style={{ transform: 'translateX(0px)', paddingRight: '20vw' }}>
+          <ArrowSVG />
+        </div>
+
+        {/* Layer 4: The Bow (Foreground) */}
+        <div ref={bowRef} className="plax-layer bow-layer" style={{ transformOrigin: 'left center', paddingRight: '30vw' }}>
+          <BowSVG />
+        </div>
+
+        {/* Flash Effect Layer */}
+        <div ref={flashRef} className="plax-flash"></div>
+
+        {/* Typography Overlay */}
+        <div className="plax-text-overlay">
+          <h2 ref={titleRef} className="plax-main-title">
             Do You Have What It Takes To Hit The Target?
           </h2>
 
@@ -343,7 +148,7 @@ const ArcheryScrollAnimation = () => {
             <div 
               key={index}
               ref={el => textRefs.current[index] = el}
-              className={`archery-cinematic-text ${index >= 4 ? 'archery-impact-text' : ''}`}
+              className={`plax-step-text ${index === 3 ? 'plax-impact-text' : ''}`}
             >
               {text}
             </div>
