@@ -9,6 +9,7 @@ import IGTSection from '../components/igt/IGTSection';
 import Testimonials from '../components/testimonials/Testimonials';
 import FunSessions from '../components/funsessions/FunSessions';
 import FullScreenCTA from '../components/cta/FullScreenCTA';
+import ArcheryScrollAnimation from '../components/animations/ArcheryScrollAnimation';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
       <WhyChooseUs />
       <IGTSection />
       <div className="mobile-hidden"><Testimonials /></div>
+      <ArcheryScrollAnimation />
       <FunSessions />
       <div className="mobile-hidden"><FullScreenCTA /></div>
       <Footer />
