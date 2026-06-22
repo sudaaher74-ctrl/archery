@@ -1,88 +1,43 @@
-.parallax-scroll-container {
-  height: 600vh; /* Scroll length */
-  background-color: #050505;
+.photo-scroll-container {
+  height: 500vh; /* 5 sections of scroll depth */
+  background-color: #000;
   position: relative;
 }
 
-.parallax-pinned-section {
+.photo-pinned-section {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1000px;
+  background-color: #000;
 }
 
-/* Layers */
-.plax-layer {
+.photo-layer {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
   will-change: transform, opacity;
+  transform: scale(1);
 }
 
-.bg-layer {
-  background: radial-gradient(circle at center, #1a202c 0%, #050505 100%);
-  z-index: 1;
+/* Add a dark gradient overlay so text is always readable */
+.photo-layer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
 }
 
-.target-layer {
-  z-index: 2;
-}
-
-.target-svg {
-  width: 10vw;
-  height: 10vw;
-  min-width: 100px;
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
-}
-
-.archer-layer {
-  z-index: 3;
-}
-
-.archer-placeholder {
-  width: 25vw;
-  height: 50vh;
-  background: linear-gradient(to top, rgba(224, 26, 34, 0.2), transparent);
-  border-radius: 100px 100px 0 0;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 1rem;
-  color: rgba(255,255,255,0.5);
-  font-family: monospace;
-  font-size: 0.8rem;
-}
-
-.bow-layer {
-  z-index: 4;
-}
-
-.bow-svg {
-  height: 60vh; /* Reduced size */
-  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.8));
-}
-
-.arrow-layer {
-  z-index: 5;
-}
-
-.arrow-svg {
-  width: 30vw; /* Reduced size */
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
-}
-
-/* Typography Overlays */
-.plax-text-overlay {
+.photo-text-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -96,49 +51,37 @@
   align-items: center;
 }
 
-.plax-main-title {
+.photo-main-title {
   position: absolute;
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem); /* Reduced size */
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
   color: #fff;
   text-align: center;
-  letter-spacing: -1px;
+  letter-spacing: 0px;
   max-width: 900px;
   text-shadow: 0 10px 40px rgba(0,0,0,0.9);
   padding: 0 20px;
 }
 
-.plax-step-text {
+.photo-step-text {
   position: absolute;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 6vw, 4.5rem); /* Reduced size */
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 400;
   color: #fff;
   text-align: center;
-  letter-spacing: 5px;
+  letter-spacing: 10px;
   opacity: 0;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.9);
+  text-shadow: 0 10px 30px rgba(0,0,0,1);
+  text-transform: uppercase;
 }
 
-.plax-impact-text {
+.photo-impact-text {
   font-family: 'Outfit', sans-serif;
   font-weight: 900;
-  font-size: clamp(3rem, 8vw, 6rem); /* Reduced size */
+  font-size: clamp(4rem, 10vw, 8rem);
   color: #E01A22; /* Brand Red */
-  letter-spacing: -2px;
-  text-transform: uppercase;
-  text-shadow: 0 0 50px rgba(224, 26, 34, 0.5);
-}
-
-.plax-flash {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  z-index: 20;
-  opacity: 0;
-  pointer-events: none;
+  letter-spacing: 5px;
+  text-shadow: 0 10px 50px rgba(224, 26, 34, 0.6);
 }
