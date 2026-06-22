@@ -38,9 +38,9 @@
 }
 
 .target-svg {
-  width: 15vw;
-  height: 15vw;
-  min-width: 150px;
+  width: 10vw;
+  height: 10vw;
+  min-width: 100px;
   filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
 }
 
@@ -49,17 +49,18 @@
 }
 
 .archer-placeholder {
-  width: 40vw;
-  height: 80vh;
+  width: 25vw;
+  height: 50vh;
   background: linear-gradient(to top, rgba(224, 26, 34, 0.2), transparent);
-  border-radius: 200px 200px 0 0;
+  border-radius: 100px 100px 0 0;
   border: 2px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 2rem;
+  padding-top: 1rem;
   color: rgba(255,255,255,0.5);
   font-family: monospace;
+  font-size: 0.8rem;
 }
 
 .bow-layer {
@@ -67,7 +68,7 @@
 }
 
 .bow-svg {
-  height: 120vh; /* Bow is massive in foreground */
+  height: 60vh; /* Reduced size */
   filter: drop-shadow(0 20px 50px rgba(0,0,0,0.8));
 }
 
@@ -76,7 +77,7 @@
 }
 
 .arrow-svg {
-  width: 50vw;
+  width: 30vw; /* Reduced size */
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
 }
 
@@ -98,7 +99,7 @@
 .plax-main-title {
   position: absolute;
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2rem, 4vw, 3rem); /* Reduced size */
   font-weight: 800;
   color: #fff;
   text-align: center;
@@ -111,7 +112,7 @@
 .plax-step-text {
   position: absolute;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem); /* Reduced size */
   font-weight: 400;
   color: #fff;
   text-align: center;
@@ -123,9 +124,9 @@
 .plax-impact-text {
   font-family: 'Outfit', sans-serif;
   font-weight: 900;
-  font-size: clamp(5rem, 12vw, 10rem);
+  font-size: clamp(3rem, 8vw, 6rem); /* Reduced size */
   color: #E01A22; /* Brand Red */
-  letter-spacing: -3px;
+  letter-spacing: -2px;
   text-transform: uppercase;
   text-shadow: 0 0 50px rgba(224, 26, 34, 0.5);
 }
