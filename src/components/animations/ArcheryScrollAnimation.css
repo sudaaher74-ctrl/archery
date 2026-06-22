@@ -1,9 +1,11 @@
+.cinematic-container {
+  height: 800vh; /* Extremely tall to allow slow, precise scrubbing */
+}
+
 .archery-scroll-container {
   position: relative;
   width: 100%;
-  background-color: #000;
-  /* We will make this container very tall so we have plenty of scroll distance */
-  height: 500vh; 
+  background-color: #0a0f12;
 }
 
 .archery-pinned-section {
@@ -16,14 +18,12 @@
   justify-content: center;
 }
 
-.archery-canvas {
+.archery-canvas-wrapper {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
   z-index: 1;
 }
 
@@ -41,26 +41,36 @@
   align-items: center;
 }
 
-.archery-step {
+.archery-main-title {
   position: absolute;
-  width: 100%;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  padding: 0 20px;
-}
-
-.archery-step h3 {
+  font-family: 'Outfit', sans-serif;
   font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
   color: #fff;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
+  text-align: center;
   letter-spacing: 2px;
+  max-width: 800px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
 
-.archery-step p {
-  font-size: 1.2rem;
-  color: #ccc;
-  max-width: 600px;
-  margin: 0 auto;
+.archery-cinematic-text {
+  position: absolute;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 10px;
+  opacity: 0; /* Handled by GSAP */
+  transform: translateY(30px) scale(0.95);
+  text-shadow: 0 10px 30px rgba(0,0,0,0.9);
+}
+
+.archery-impact-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: clamp(4rem, 10vw, 8rem);
+  color: #E01A22; /* Brand Red */
+  letter-spacing: -2px;
+  text-transform: uppercase;
 }
