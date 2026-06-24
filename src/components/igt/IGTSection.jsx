@@ -5,7 +5,7 @@ import './IGTSection.css';
 
 const IGTSection = () => {
   const [currentVideo, setCurrentVideo] = useState(0);
-  const videos = ['/igt1.mp4', '/igt2.mp4'];
+  const videos = ['/igt1.mp4', '/indiasgottalent2.mp4'];
 
   const nextVideo = () => {
     setCurrentVideo((prev) => (prev + 1) % videos.length);
