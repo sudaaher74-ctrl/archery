@@ -44,37 +44,37 @@ const StorytellingScroll = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=4000',
+          end: '+=2500',
           scrub: 1,
           pin: true,
           anticipatePin: 1,
         }
       });
 
-      // Phase 1: Archer appears
+      // Phase 1: Archer and Hero Text appear
       tl.fromTo('.st-archer', { x: '-50vw', opacity: 0 }, { x: '0', opacity: 1, duration: 1 })
         .fromTo('.st-title-hero', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, '<');
 
-      // Phase 2: Arrow flies across screen
-      tl.to('.st-title-hero', { opacity: 0, duration: 0.5 })
+      // Phase 2: Arrow flies, Hero Text fades, Shot Text appears
+      tl.to('.st-title-hero', { opacity: 0, y: -20, duration: 0.5 })
         .to('.st-archer', { x: '-50vw', opacity: 0, duration: 1 }, '<')
-        .fromTo('.st-arrow-1', { x: '-50vw', opacity: 1 }, { x: '150vw', opacity: 1, duration: 1.5, ease: 'power1.inOut' });
+        .fromTo('.st-title-shot', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, '<')
+        .fromTo('.st-arrow-1', { x: '-50vw', opacity: 1 }, { x: '50vw', opacity: 1, duration: 1.5, ease: 'power1.inOut' }, '<');
 
-      // Phase 3: Target zooms in + "Take Your First Shot"
-      tl.fromTo('.st-target', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1 })
-        .fromTo('.st-title-shot', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 }, '<');
-
-      // Phase 4: Bullseye Hit
-      tl.to('.st-title-shot', { opacity: 0, duration: 0.5 })
-        .fromTo('.st-arrow-2', { x: '-50vw', opacity: 1, y: 0 }, { x: '-70px', opacity: 1, y: 0, duration: 0.5 })
+      // Phase 3: Block 1 fades out, Target zooms in, Arrow 2 hits Target
+      tl.to('.st-block-1', { opacity: 0, y: -50, duration: 1 })
+        .fromTo('.st-target', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1 }, '<')
+        .fromTo('.st-arrow-2', { x: '-50vw', opacity: 1 }, { x: '-70px', opacity: 1, duration: 0.5 })
         .to('.st-target', { scale: 1.1, duration: 0.1, yoyo: true, repeat: 1 })
         .to('.st-bullseye-ring', { scale: 2, opacity: 0, duration: 0.5 }, '<');
 
-      // Phase 5: Benefits appear
-      tl.fromTo('.st-benefit-card', { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.2 }, '+=0.2');
+      // Phase 4: Block 2 (Benefits) fades in
+      tl.fromTo('.st-block-2', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 }, '+=0.2')
+        .fromTo('.st-benefit-card', { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6, stagger: 0.1 }, '<+0.2');
 
-      // Phase 6: Book Your Session
-      tl.fromTo('.st-booking', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 });
+      // Phase 5: Block 2 fades out, Block 3 (Booking) fades in
+      tl.to('.st-block-2', { opacity: 0, y: -50, duration: 1 }, '+=1')
+        .fromTo('.st-block-3', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 }, '<');
 
     }, containerRef);
 
@@ -85,18 +85,15 @@ const StorytellingScroll = () => {
     <div className="st-container" ref={containerRef}>
       <div className="st-pinned-wrapper">
         
-        <h1 className="st-title st-title-hero">Unleash Your Inner Archer</h1>
-        <h1 className="st-title st-title-shot">Take Your First Shot</h1>
-        
-        <div className="st-asset st-archer">
-          <ArcherSVG />
-        </div>
-        
-        <div className="st-asset st-arrow-1">
-          <ArrowSVG />
-        </div>
-        
-        <div className="st-center-group">
+        {/* Left Side: Visuals */}
+        <div className="st-left">
+          <div className="st-asset st-archer">
+            <ArcherSVG />
+          </div>
+          <div className="st-asset st-arrow-1">
+            <ArrowSVG />
+          </div>
+          
           <div className="st-target-wrapper">
             <div className="st-asset st-target">
               <TargetSVG />
@@ -106,31 +103,48 @@ const StorytellingScroll = () => {
             </div>
             <div className="st-bullseye-ring"></div>
           </div>
-          
-          <div className="st-benefits">
-            <div className="st-benefit-card pos-1">
-              <Target size={32} />
-              <span>Focus</span>
-            </div>
-            <div className="st-benefit-card pos-2">
-              <Zap size={32} />
-              <span>Confidence</span>
-            </div>
-            <div className="st-benefit-card pos-3">
-              <Smile size={32} />
-              <span>Fun</span>
-            </div>
-            <div className="st-benefit-card pos-4">
-              <HeartPulse size={32} />
-              <span>Fitness</span>
-            </div>
-          </div>
         </div>
 
-        <div className="st-booking">
-          <h2>Book Your Session</h2>
-          <p>₹350 | 45 Minutes | All Ages</p>
-          <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="btn btn-primary st-book-btn">Book Now</a>
+        {/* Right Side: Information */}
+        <div className="st-right">
+          
+          {/* Block 1 */}
+          <div className="st-text-block st-block-1">
+            <h1 className="st-title st-title-hero">Unleash Your<br />Inner Archer</h1>
+            <h1 className="st-title st-title-shot">Take Your<br />First Shot</h1>
+          </div>
+
+          {/* Block 2 */}
+          <div className="st-text-block st-block-2">
+            <div className="st-benefits-grid">
+              <div className="st-benefit-card">
+                <Target size={32} />
+                <span>Focus</span>
+              </div>
+              <div className="st-benefit-card">
+                <Zap size={32} />
+                <span>Confidence</span>
+              </div>
+              <div className="st-benefit-card">
+                <Smile size={32} />
+                <span>Fun</span>
+              </div>
+              <div className="st-benefit-card">
+                <HeartPulse size={32} />
+                <span>Fitness</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Block 3 */}
+          <div className="st-text-block st-block-3">
+            <div className="st-booking">
+              <h2>Book Your Session</h2>
+              <p>₹350 | 45 Minutes | All Ages</p>
+              <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="btn btn-primary st-book-btn">Book Now</a>
+            </div>
+          </div>
+
         </div>
 
       </div>
