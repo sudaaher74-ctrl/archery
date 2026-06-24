@@ -1,13 +1,25 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Trophy, Tv, Target } from 'lucide-react';
+import { Star, Trophy, Tv, Target, ChevronLeft, ChevronRight } from 'lucide-react';
 import './IGTSection.css';
 
 const IGTSection = () => {
+  const [currentVideo, setCurrentVideo] = useState(0);
+  const videos = ['/igt1.mp4', '/igt2.mp4'];
+
+  const nextVideo = () => {
+    setCurrentVideo((prev) => (prev + 1) % videos.length);
+  };
+
+  const prevVideo = () => {
+    setCurrentVideo((prev) => (prev - 1 + videos.length) % videos.length);
+  };
+
   return (
     <section className="igt-section section-padding">
       <div className="container">
         <div className="igt-layout">
-          {/* Left Side: Image */}
+          {/* Left Side: Video */}
           <motion.div 
             className="igt-image-wrapper"
             initial={{ opacity: 0, x: -50 }}
@@ -15,12 +27,37 @@ const IGTSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <img 
-              src="/achivments4.png" 
-              alt="India's Got Talent Season 11" 
+            <video 
+              key={currentVideo}
+              src={videos[currentVideo]} 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
               className="igt-img" 
             />
             <div className="igt-img-overlay"></div>
+            
+            {videos.length > 1 && (
+              <div className="video-controls" style={{ position: 'absolute', bottom: '20px', right: '20px', zIndex: 10, display: 'flex', gap: '10px' }}>
+                <button 
+                  onClick={prevVideo} 
+                  style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#fff', transition: 'all 0.3s' }}
+                  onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.4)'}
+                  onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button 
+                  onClick={nextVideo} 
+                  style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#fff', transition: 'all 0.3s' }}
+                  onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.4)'}
+                  onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+                >
+                  <ChevronRight size={24} />
+                </button>
+              </div>
+            )}
           </motion.div>
 
           {/* Right Side: Content */}
