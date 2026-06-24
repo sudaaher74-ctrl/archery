@@ -1,7 +1,7 @@
 import React from 'react';
 import SEO from '../components/seo/SEO';
 import { localBusinessSchema, faqSchema } from '../data/schema';
-import HeroSection from '../components/hero/HeroSection';
+import StorytellingScroll from '../components/storytelling/StorytellingScroll';
 import MeetCoach from '../components/coach/MeetCoach';
 import AboutAcademy from '../components/about/AboutAcademy';
 import WhyChooseUs from '../components/whychooseus/WhyChooseUs';
@@ -20,7 +20,7 @@ const Home = () => {
         url="https://deonaarcheryacademy.com/"
         schema={[localBusinessSchema, faqSchema]}
       />
-      <HeroSection />
+      <StorytellingScroll />
       <MeetCoach />
       <AboutAcademy />
       <WhyChooseUs />
