@@ -129,7 +129,7 @@ const StorytellingScroll = () => {
 
         <div className="st-booking">
           <h2>Book Your Session</h2>
-          <p>₹450 | 45 Minutes | All Ages</p>
+          <p>₹350 | 45 Minutes | All Ages</p>
           <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="btn btn-primary st-book-btn">Book Now</a>
         </div>
 
