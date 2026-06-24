@@ -7,7 +7,7 @@ import AboutAcademy from '../components/about/AboutAcademy';
 import WhyChooseUs from '../components/whychooseus/WhyChooseUs';
 import IGTSection from '../components/igt/IGTSection';
 import Testimonials from '../components/testimonials/Testimonials';
-import StorytellingScroll from '../components/storytelling/StorytellingScroll';
+import FunSessions from '../components/funsessions/FunSessions';
 import FullScreenCTA from '../components/cta/FullScreenCTA';
 import Footer from '../components/Footer';
 
@@ -26,7 +26,7 @@ const Home = () => {
       <WhyChooseUs />
       <IGTSection />
       <div className="mobile-hidden"><Testimonials /></div>
-      <StorytellingScroll />
+      <FunSessions />
       <div className="mobile-hidden"><FullScreenCTA /></div>
       <Footer />
     </>
