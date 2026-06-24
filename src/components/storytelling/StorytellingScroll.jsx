@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Target, Zap, Smile, HeartPulse } from 'lucide-react';
+import { Clock, IndianRupee, Users, CalendarCheck, ShieldCheck } from 'lucide-react';
 import './StorytellingScroll.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -53,26 +53,24 @@ const StorytellingScroll = () => {
 
       // Phase 1: Archer and Hero Text appear
       tl.fromTo('.st-archer', { x: '-50vw', opacity: 0 }, { x: '0', opacity: 1, duration: 1 })
-        .fromTo('.st-title-hero', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, '<');
+        .fromTo('.st-block-1', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, '<');
 
-      // Phase 2: Arrow flies, Hero Text fades, Shot Text appears
-      tl.to('.st-title-hero', { opacity: 0, y: -20, duration: 0.5 })
+      // Phase 2: Arrow flies, Hero Text fades
+      tl.to('.st-block-1', { opacity: 0, y: -20, duration: 0.8 })
         .to('.st-archer', { x: '-50vw', opacity: 0, duration: 1 }, '<')
-        .fromTo('.st-title-shot', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, '<')
         .fromTo('.st-arrow-1', { x: '-50vw', opacity: 1 }, { x: '50vw', opacity: 1, duration: 1.5, ease: 'power1.inOut' }, '<');
 
-      // Phase 3: Block 1 fades out, Target zooms in, Arrow 2 hits Target
-      tl.to('.st-block-1', { opacity: 0, y: -50, duration: 1 })
-        .fromTo('.st-target', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1 }, '<')
+      // Phase 3: Target zooms in, Arrow 2 hits Target
+      tl.fromTo('.st-target', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1 }, '<+0.5')
         .fromTo('.st-arrow-2', { x: '-50vw', opacity: 1 }, { x: '-70px', opacity: 1, duration: 0.5 })
         .to('.st-target', { scale: 1.1, duration: 0.1, yoyo: true, repeat: 1 })
         .to('.st-bullseye-ring', { scale: 2, opacity: 0, duration: 0.5 }, '<');
 
-      // Phase 4: Block 2 (Benefits) fades in
+      // Phase 4: Block 2 (Benefits Grid) fades in
       tl.fromTo('.st-block-2', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 }, '+=0.2')
         .fromTo('.st-benefit-card', { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6, stagger: 0.1 }, '<+0.2');
 
-      // Phase 5: Block 2 fades out, Block 3 (Booking) fades in
+      // Phase 5: Block 2 fades out, Block 3 (Booking CTA) fades in
       tl.to('.st-block-2', { opacity: 0, y: -50, duration: 1 }, '+=1')
         .fromTo('.st-block-3', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 }, '<');
 
@@ -108,40 +106,52 @@ const StorytellingScroll = () => {
         {/* Right Side: Information */}
         <div className="st-right">
           
-          {/* Block 1 */}
+          {/* Block 1: Intro */}
           <div className="st-text-block st-block-1">
-            <h1 className="st-title st-title-hero">Unleash Your<br />Inner Archer</h1>
-            <h1 className="st-title st-title-shot">Take Your<br />First Shot</h1>
+            <div className="st-badge">Open To All</div>
+            <h1 className="st-title-hero"><span className="title-gold">TRY ARCHERY</span><br />FUN SESSIONS</h1>
+            <p className="st-subtitle-hero">
+              Looking for a unique and exciting activity? Experience archery with our 45-Minute Fun Archery Sessions. 
+              Whether you're coming with friends, family, colleagues, or celebrating a special occasion, our sessions are designed for everyone to enjoy.
+            </p>
           </div>
 
-          {/* Block 2 */}
+          {/* Block 2: Benefits Grid */}
           <div className="st-text-block st-block-2">
             <div className="st-benefits-grid">
               <div className="st-benefit-card">
-                <Target size={32} />
-                <span>Focus</span>
+                <Clock size={28} />
+                <span>45-Minute Session</span>
               </div>
               <div className="st-benefit-card">
-                <Zap size={32} />
-                <span>Confidence</span>
+                <IndianRupee size={28} />
+                <span>₹350 per person</span>
               </div>
               <div className="st-benefit-card">
-                <Smile size={32} />
-                <span>Fun</span>
+                <ShieldCheck size={28} />
+                <span>All equipment provided</span>
               </div>
               <div className="st-benefit-card">
-                <HeartPulse size={32} />
-                <span>Fitness</span>
+                <Users size={28} />
+                <span>Suitable for all ages</span>
+              </div>
+              <div className="st-benefit-card span-2">
+                <CalendarCheck size={28} />
+                <span>1 day advance booking</span>
               </div>
             </div>
           </div>
 
-          {/* Block 3 */}
+          {/* Block 3: Booking Info */}
           <div className="st-text-block st-block-3">
             <div className="st-booking">
-              <h2>Book Your Session</h2>
-              <p>₹350 | 45 Minutes | All Ages</p>
-              <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="btn btn-primary st-book-btn">Book Now</a>
+              <p className="st-closing-text">
+                No experience needed—just come, aim, and have fun! Discover the thrill of archery in a safe and exciting environment at Drona Archery Academy. ✨
+              </p>
+              <h4 className="st-motto">Aim • Shoot • Enjoy • Repeat 🎯</h4>
+              <a href="https://wa.me/919699414848" target="_blank" rel="noreferrer" className="btn btn-primary st-book-btn">
+                Book Your Session Now
+              </a>
             </div>
           </div>
 

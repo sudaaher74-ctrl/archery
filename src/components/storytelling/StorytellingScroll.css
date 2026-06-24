@@ -91,32 +91,49 @@
   justify-content: center;
   align-items: flex-start;
   opacity: 0; /* managed by GSAP */
-  pointer-events: none; /* enable pointers when visible if needed */
+  pointer-events: none;
 }
 
 .st-block-3 {
   pointer-events: auto; /* Buttons need to be clickable */
 }
 
-/* Typography */
-.st-title {
-  position: absolute;
-  font-size: 3.5rem;
-  font-weight: 800;
+/* Typography for Block 1 */
+.st-badge {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.st-title-hero {
+  font-size: 3rem;
+  font-weight: 800;
   line-height: 1.1;
+  margin: 0 0 1.5rem 0;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.title-gold {
+  color: #fbbf24;
+}
+
+.st-subtitle-hero {
+  font-size: 1.125rem;
+  color: #a1a1aa;
+  line-height: 1.6;
   margin: 0;
 }
 
-.st-title-hero, .st-title-shot {
-  opacity: 0;
-}
-
-/* Benefits Grid */
+/* Benefits Grid for Block 2 */
 .st-benefits-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -128,49 +145,62 @@
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 2rem 1.5rem;
-  border-radius: 16px;
-  font-size: 1.25rem;
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
   font-weight: 600;
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.75rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.st-benefit-card.span-2 {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .st-benefit-card svg {
   color: #fbbf24;
 }
 
-/* Booking Section */
+/* Booking Section for Block 3 */
 .st-booking {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-.st-booking h2 {
-  font-size: 3rem;
+.st-closing-text {
+  font-size: 1.125rem;
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.st-motto {
+  font-size: 1.5rem;
   font-weight: 700;
+  color: #fbbf24;
   margin: 0;
-  color: #fff;
-  line-height: 1.1;
-}
-
-.st-booking p {
-  font-size: 1.25rem;
-  color: #a1a1aa;
-  margin: 0;
-  font-weight: 500;
 }
 
 .st-book-btn {
-  margin-top: 1.5rem;
   padding: 1rem 3rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   border-radius: 50px;
   box-shadow: 0 10px 25px rgba(251, 191, 36, 0.4);
 }
@@ -193,8 +223,12 @@
     align-items: flex-start;
   }
   
-  .st-title {
-    font-size: 2.2rem;
+  .st-title-hero {
+    font-size: 2rem;
+  }
+  
+  .st-subtitle-hero {
+    font-size: 1rem;
   }
   
   .st-benefits-grid {
@@ -202,13 +236,22 @@
   }
   
   .st-benefit-card {
-    padding: 1.25rem 1rem;
-    font-size: 1rem;
+    padding: 1rem;
+    font-size: 0.9rem;
     gap: 0.5rem;
   }
   
-  .st-booking h2 {
-    font-size: 2rem;
+  .st-booking {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .st-closing-text {
+    font-size: 1rem;
+  }
+  
+  .st-motto {
+    font-size: 1.25rem;
   }
   
   .st-book-btn {
